@@ -35,7 +35,7 @@ clone o repositório:
 
 ```powershell
 cd C:\Workfoli
-git clone https://github.com/SEU-USUARIO/workfoli.git
+git clone https://github.com/workfoli/workfoli.git
 cd workfoli
 ```
 
