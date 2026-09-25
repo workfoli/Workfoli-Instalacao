@@ -1,0 +1,331 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://workfoli.local/schemas/workfoli.base.schema.json",
+  "title": "Workfoli — manifesto da Base",
+  "description": "Contrato entre a Base de uma empresa e o Workfoli Hub (schemaVersion 3). Regras semânticas adicionais (credenciais, referências cruzadas, caminhos seguros) ficam em workfoli-contract.mjs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "schemaVersion", "baseId", "status", "company", "profile", "context", "modules"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "format": { "const": "workfoli-base" },
+    "schemaVersion": { "const": 3 },
+    "baseId": { "description": "UUID da Base. null somente no template.", "oneOf": [{ "type": "null" }, { "type": "string", "format": "uuid" }] },
+    "status": { "enum": ["template", "active"] },
+    "template": {
+      "type": "object", "additionalProperties": false, "required": ["id", "version"],
+      "properties": { "id": { "$ref": "#/$defs/slug" }, "version": { "$ref": "#/$defs/semver" } }
+    },
+    "createdAt": { "$ref": "#/$defs/nullableDate" },
+    "updatedAt": { "$ref": "#/$defs/nullableDate" },
+    "company": {
+      "type": "object", "additionalProperties": false, "required": ["name", "slug"],
+      "properties": {
+        "name": { "$ref": "#/$defs/name" },
+        "slug": { "type": "string", "maxLength": 48, "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "legalName": { "type": ["string", "null"], "maxLength": 200 },
+        "segment": { "type": ["string", "null"], "maxLength": 120 },
+        "description": { "type": ["string", "null"], "maxLength": 2000 },
+        "tagline": { "type": ["string", "null"], "maxLength": 200 },
+        "website": { "$ref": "#/$defs/nullableUrl" },
+        "locale": { "type": "string", "pattern": "^[a-z]{2,3}(?:-[A-Z]{2})?$", "default": "pt-BR" },
+        "timezone": { "type": "string", "default": "America/Sao_Paulo" }
+      }
+    },
+    "profile": { "enum": ["general", "services", "agency", "clinic", "development", "retail"] },
+    "identity": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "guide": { "$ref": "#/$defs/nullablePath" },
+        "logo": { "$ref": "#/$defs/nullablePath" },
+        "symbol": { "$ref": "#/$defs/nullablePath" },
+        "colors": {
+          "type": "object", "additionalProperties": false,
+          "properties": {
+            "background": { "$ref": "#/$defs/color" }, "surface": { "$ref": "#/$defs/color" }, "text": { "$ref": "#/$defs/color" },
+            "textSecondary": { "$ref": "#/$defs/color" }, "accent": { "$ref": "#/$defs/color" }
+          }
+        },
+        "typography": {
+          "type": "object", "additionalProperties": false,
+          "properties": { "heading": { "type": "string", "maxLength": 80 }, "body": { "type": "string", "maxLength": 80 } }
+        },
+        "voice": {
+          "type": "object", "additionalProperties": false,
+          "properties": {
+            "tagline": { "type": ["string", "null"], "maxLength": 300 },
+            "message": { "type": ["string", "null"], "maxLength": 300 },
+            "concept": { "type": ["string", "null"], "maxLength": 300 },
+            "description": { "type": ["string", "null"], "maxLength": 1000 },
+            "method": { "type": "array", "maxItems": 12, "items": { "type": "string", "maxLength": 60 } }
+          }
+        }
+      }
+    },
+    "context": {
+      "type": "object", "additionalProperties": false, "required": ["memory", "identity"],
+      "properties": {
+        "memory": { "$ref": "#/$defs/path" },
+        "identity": { "$ref": "#/$defs/path" },
+        "tasks": { "$ref": "#/$defs/nullablePath" },
+        "rules": { "$ref": "#/$defs/nullablePath" },
+        "knowledge": { "type": "array", "maxItems": 50, "items": { "$ref": "#/$defs/path" } }
+      }
+    },
+    "services": {
+      "type": "array", "maxItems": 100,
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["id", "name"],
+        "properties": {
+          "id": { "$ref": "#/$defs/slug" }, "name": { "$ref": "#/$defs/name" },
+          "summary": { "type": ["string", "null"], "maxLength": 600 },
+          "path": { "$ref": "#/$defs/nullablePath" },
+          "status": { "enum": ["active", "planned", "paused", "retired"] },
+          "visibility": { "$ref": "#/$defs/visibility" },
+          "transversal": { "type": "boolean" }
+        }
+      }
+    },
+    "projects": {
+      "type": "array", "maxItems": 500,
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["id", "name", "type"],
+        "properties": {
+          "id": { "$ref": "#/$defs/slug" }, "name": { "$ref": "#/$defs/name" },
+          "type": { "enum": ["website", "landing-page", "campaign", "content", "system", "automation", "integration", "dashboard", "data", "brand", "other"] },
+          "status": { "enum": ["planned", "active", "paused", "done", "archived"] },
+          "path": { "$ref": "#/$defs/nullablePath" },
+          "summary": { "type": ["string", "null"], "maxLength": 600 },
+          "services": { "type": "array", "maxItems": 20, "items": { "$ref": "#/$defs/slug" } },
+          "links": {
+            "type": "array", "maxItems": 20,
+            "items": {
+              "type": "object", "additionalProperties": false, "required": ["label", "url"],
+              "properties": { "label": { "type": "string", "maxLength": 80 }, "url": { "$ref": "#/$defs/url" } }
+            }
+          },
+          "visibility": { "$ref": "#/$defs/visibility" },
+          "createdAt": { "$ref": "#/$defs/nullableDate" }
+        }
+      }
+    },
+    "modules": {
+      "type": "object", "additionalProperties": false, "required": ["enabled"],
+      "properties": {
+        "enabled": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/moduleId" } },
+        "order": { "type": "array", "items": { "$ref": "#/$defs/moduleId" } },
+        "settings": {
+          "type": "object",
+          "propertyNames": { "$ref": "#/$defs/moduleId" },
+          "additionalProperties": {
+            "type": "object", "additionalProperties": false,
+            "properties": {
+              "label": { "type": "string", "maxLength": 40 },
+              "description": { "type": ["string", "null"], "maxLength": 300 }
+            }
+          }
+        }
+      }
+    },
+    "crm": {
+      "description": "Estrutura e regras do CRM desta empresa. Dados vivos (contatos, leads, oportunidades) ficam no banco da instância, nunca aqui. Opcional: sem esta seção o Hub usa o funil genérico padrão.",
+      "type": "object", "additionalProperties": false, "required": ["enabled"],
+      "properties": {
+        "enabled": { "type": "boolean", "description": "Precisa concordar com a presença de \"crm\" em modules.enabled." },
+        "labels": {
+          "type": "object", "additionalProperties": false,
+          "propertyNames": { "enum": ["contact", "contacts", "organization", "organizations", "lead", "leads", "opportunity", "opportunities"] },
+          "properties": {
+            "contact": { "$ref": "#/$defs/crmLabel" }, "contacts": { "$ref": "#/$defs/crmLabel" },
+            "organization": { "$ref": "#/$defs/crmLabel" }, "organizations": { "$ref": "#/$defs/crmLabel" },
+            "lead": { "$ref": "#/$defs/crmLabel" }, "leads": { "$ref": "#/$defs/crmLabel" },
+            "opportunity": { "$ref": "#/$defs/crmLabel" }, "opportunities": { "$ref": "#/$defs/crmLabel" }
+          }
+        },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "pipelines": {
+          "type": "array", "maxItems": 10,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["id", "name", "stages"],
+            "properties": {
+              "id": { "$ref": "#/$defs/crmId" },
+              "name": { "type": "string", "minLength": 1, "maxLength": 60 },
+              "default": { "type": "boolean" },
+              "description": { "type": ["string", "null"], "maxLength": 300 },
+              "stages": {
+                "type": "array", "minItems": 3, "maxItems": 30,
+                "items": {
+                  "type": "object", "additionalProperties": false, "required": ["id", "name", "kind"],
+                  "properties": {
+                    "id": { "$ref": "#/$defs/crmId" },
+                    "name": { "type": "string", "minLength": 1, "maxLength": 40 },
+                    "kind": { "enum": ["open", "won", "lost"] },
+                    "probability": { "type": "integer", "minimum": 0, "maximum": 100 },
+                    "requiredFields": { "type": "array", "maxItems": 12, "items": { "type": "string", "pattern": "^(?:value|expectedCloseDate|ownerId|contactId|organizationId|priority|sourceId|custom\\.[a-z0-9]+(?:-[a-z0-9]+)*)$" } }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "customFields": {
+          "type": "array", "maxItems": 60,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["id", "entity", "label", "type"],
+            "properties": {
+              "id": { "$ref": "#/$defs/crmId" },
+              "entity": { "enum": ["contact", "organization", "lead", "opportunity"] },
+              "label": { "type": "string", "minLength": 1, "maxLength": 60 },
+              "type": { "enum": ["text", "textarea", "number", "currency", "date", "select", "multiselect", "checkbox", "email", "phone", "url"] },
+              "options": { "type": "array", "minItems": 1, "maxItems": 50, "uniqueItems": true, "items": { "type": "string", "minLength": 1, "maxLength": 60 } },
+              "required": { "type": "boolean" },
+              "help": { "type": ["string", "null"], "maxLength": 200 }
+            }
+          }
+        },
+        "sources": {
+          "description": "Origens extras. As nativas (google-ads, meta-ads, instagram, google-organico, site, landing-page, whatsapp, indicacao, importacao, manual, outros) já existem.",
+          "type": "array", "maxItems": 40,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["id", "label", "kind"],
+            "properties": {
+              "id": { "$ref": "#/$defs/crmId" },
+              "label": { "type": "string", "minLength": 1, "maxLength": 60 },
+              "kind": { "enum": ["paid", "organic", "social", "referral", "direct", "event", "import", "manual", "integration", "other"] }
+            }
+          }
+        },
+        "lostReasons": { "type": "array", "maxItems": 30, "uniqueItems": true, "items": { "type": "string", "minLength": 1, "maxLength": 80 } },
+        "automations": {
+          "type": "array", "maxItems": 30,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["id", "name", "when", "actions"],
+            "properties": {
+              "id": { "$ref": "#/$defs/crmId" },
+              "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+              "enabled": { "type": "boolean" },
+              "when": {
+                "type": "object", "additionalProperties": false, "required": ["event"],
+                "properties": {
+                  "event": { "enum": ["lead_created", "stage_entered", "deal_won", "deal_lost"] },
+                  "pipeline": { "$ref": "#/$defs/crmId" },
+                  "stage": { "$ref": "#/$defs/crmId" }
+                }
+              },
+              "actions": {
+                "type": "array", "minItems": 1, "maxItems": 5,
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "object", "additionalProperties": false, "required": ["type", "title"],
+                      "properties": {
+                        "type": { "const": "create_task" },
+                        "title": { "type": "string", "minLength": 1, "maxLength": 200 },
+                        "dueInDays": { "type": "integer", "minimum": 0, "maximum": 365 },
+                        "assignTo": { "enum": ["owner", "none"] }
+                      }
+                    },
+                    {
+                      "type": "object", "additionalProperties": false, "required": ["type", "tag"],
+                      "properties": { "type": { "const": "add_tag" }, "tag": { "type": "string", "minLength": 1, "maxLength": 40 } }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "integrations": {
+          "description": "Vínculo entre plataformas conectadas no Hub e o CRM. A conexão (conta, tokens) nunca fica na Base.",
+          "type": "array", "maxItems": 2,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["provider", "leads", "source"],
+            "properties": {
+              "provider": { "enum": ["meta", "google"] },
+              "leads": { "type": "boolean", "description": "Importar os leads captados pelos formulários da plataforma." },
+              "source": { "$ref": "#/$defs/crmId" },
+              "pipeline": { "$ref": "#/$defs/crmId", "description": "Se informado, cada lead importado abre uma oportunidade na primeira etapa deste funil." }
+            }
+          }
+        }
+      }
+    },
+    "integrations": {
+      "type": "array", "maxItems": 60,
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["id", "provider"],
+        "properties": {
+          "id": { "$ref": "#/$defs/slug" },
+          "provider": { "enum": ["google", "gmail", "google-calendar", "google-drive", "google-ads", "search-console", "google-analytics", "meta", "instagram", "facebook", "whatsapp", "github", "vercel", "supabase", "cloudflare", "netlify", "custom"] },
+          "label": { "type": ["string", "null"], "maxLength": 80 },
+          "purpose": { "type": ["string", "null"], "maxLength": 300 },
+          "status": { "enum": ["planned", "pending", "connected", "disabled"] },
+          "account": { "type": ["string", "null"], "maxLength": 120 },
+          "secrets": { "description": "Somente NOMES de variáveis do cofre da instância; nunca valores.", "type": "array", "maxItems": 10, "items": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]{1,63}$" } }
+        }
+      }
+    },
+    "assets": {
+      "type": "array", "maxItems": 200,
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["id", "kind", "path"],
+        "properties": {
+          "id": { "$ref": "#/$defs/slug" },
+          "kind": { "enum": ["logo", "symbol", "icon", "image", "font", "document", "video", "other"] },
+          "path": { "$ref": "#/$defs/path" },
+          "label": { "type": ["string", "null"], "maxLength": 80 },
+          "visibility": { "$ref": "#/$defs/visibility" }
+        }
+      }
+    },
+    "resources": {
+      "type": "array", "maxItems": 200,
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["id", "kind", "label"],
+        "properties": {
+          "id": { "$ref": "#/$defs/slug" },
+          "kind": { "enum": ["link", "document", "repository", "dashboard", "social", "other"] },
+          "label": { "type": "string", "maxLength": 120 },
+          "url": { "$ref": "#/$defs/nullableUrl" },
+          "path": { "$ref": "#/$defs/nullablePath" },
+          "visibility": { "$ref": "#/$defs/visibility" }
+        }
+      }
+    },
+    "roles": {
+      "description": "Sugestões de papéis. O Hub só aplica com aprovação do proprietário; a Base nunca concede administração.",
+      "type": "array", "maxItems": 30,
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["id", "name", "permissions"],
+        "properties": {
+          "id": { "type": "string", "maxLength": 40, "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "not": { "enum": ["owner", "manager", "admin", "member", "viewer"] } },
+          "name": { "type": "string", "maxLength": 60 },
+          "description": { "type": ["string", "null"], "maxLength": 300 },
+          "permissions": { "type": "array", "maxItems": 80, "items": { "type": "string", "pattern": "^[a-z][a-z0-9-]*:(?:read|write|admin|use|act|private)$" } }
+        }
+      }
+    },
+    "data": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "versionable": { "type": "array", "maxItems": 100, "items": { "$ref": "#/$defs/path" } },
+        "private": { "type": "array", "maxItems": 100, "items": { "$ref": "#/$defs/path" } }
+      }
+    }
+  },
+  "$defs": {
+    "slug": { "type": "string", "maxLength": 63, "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "crmId": { "type": "string", "maxLength": 40, "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "crmLabel": { "type": "string", "minLength": 1, "maxLength": 40 },
+    "name": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "semver": { "type": "string", "pattern": "^\\d{1,4}\\.\\d{1,4}\\.\\d{1,6}(?:-[0-9A-Za-z.-]{1,32})?$" },
+    "path": { "type": "string", "minLength": 1, "maxLength": 1024, "pattern": "^(?![/])(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\\\<>:\"|?*%]+$" },
+    "nullablePath": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/path" }] },
+    "url": { "type": "string", "maxLength": 2048, "pattern": "^https?://" },
+    "nullableUrl": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/url" }] },
+    "nullableDate": { "oneOf": [{ "type": "null" }, { "type": "string", "format": "date-time" }, { "type": "string", "format": "date" }] },
+    "color": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+    "visibility": { "enum": ["public", "internal", "restricted"] },
+    "moduleId": { "enum": ["overview", "company", "knowledge", "projects", "files", "tasks", "crm", "integrations", "ai", "history", "users", "settings", "calendar", "marketing", "site", "campaigns", "content", "dashboards", "automations", "patients", "media", "finance", "development"] }
+  }
+}

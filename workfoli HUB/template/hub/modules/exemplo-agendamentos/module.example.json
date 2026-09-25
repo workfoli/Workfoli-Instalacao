@@ -1,0 +1,17 @@
+{
+  "format": "workfoli-module",
+  "schemaVersion": 1,
+  "id": "exemplo-agendamentos",
+  "label": "Agendamentos",
+  "description": "Pedidos de agendamento recebidos pela equipe.",
+  "icon": "calendar",
+  "entityLabel": "Agendamento",
+  "fields": [
+    { "id": "contato", "label": "Contato", "type": "text", "required": true },
+    { "id": "data", "label": "Data", "type": "date", "required": true },
+    { "id": "hora", "label": "Hora", "type": "time" },
+    { "id": "status", "label": "Situação", "type": "select", "options": ["Solicitado", "Confirmado", "Realizado", "Cancelado"] },
+    { "id": "observacoes", "label": "Observações", "type": "textarea" }
+  ],
+  "listFields": ["contato", "data", "hora", "status"]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://workfoli.local/schemas/workfoli.hub.schema.json",
+  "title": "Workfoli — configuração da instalação do Hub",
+  "description": "Configuração específica da empresa (CLIENT CONFIG). Sem segredos: credenciais ficam na pasta secrets da instância.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "schemaVersion", "hubId", "mode"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "format": { "const": "workfoli-hub" },
+    "schemaVersion": { "const": 1 },
+    "hubId": { "type": "string", "format": "uuid" },
+    "mode": { "description": "local: o Hub lê a Base no disco. remote: o Hub recebe a Base pelo Local Agent.", "enum": ["local", "remote"] },
+    "server": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "host": { "type": "string", "default": "127.0.0.1" },
+        "port": { "type": "integer", "minimum": 1024, "maximum": 65535, "default": 4870 },
+        "publicUrl": { "type": ["string", "null"], "pattern": "^https?://" }
+      }
+    },
+    "modules": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "disabled": { "type": "array", "items": { "type": "string" } },
+        "custom": { "description": "Módulos declarativos em hub/modules/<id>/module.json.", "type": "array", "maxItems": 30, "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" } }
+      }
+    },
+    "branding": {
+      "type": "object", "additionalProperties": false,
+      "properties": { "theme": { "enum": ["dark", "light", "system"] }, "useBaseIdentity": { "type": "boolean" } }
+    },
+    "ai": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "provider": { "enum": ["local", "none", "claude-cli", "codex-cli"] },
+        "externalContext": { "description": "Autoriza enviar contexto da empresa a um provedor externo.", "type": "boolean" }
+      }
+    },
+    "security": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "sessionHours": { "type": "integer", "minimum": 1, "maximum": 720 },
+        "idleMinutes": { "type": "integer", "minimum": 5, "maximum": 1440 }
+      }
+    },
+    "agent": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "hubUrl": { "type": ["string", "null"], "pattern": "^https?://" },
+        "intervalSeconds": { "type": "integer", "minimum": 2, "maximum": 3600 }
+      }
+    }
+  }
+}

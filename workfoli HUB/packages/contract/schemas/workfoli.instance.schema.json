@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://workfoli.local/schemas/workfoli.instance.schema.json",
+  "title": "Workfoli — instância de uma empresa",
+  "description": "Raiz single-tenant: liga a Base, a instalação do Hub e as camadas de dados de UMA empresa.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "schemaVersion", "instanceId", "company", "core", "layout"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "format": { "const": "workfoli-instance" },
+    "schemaVersion": { "const": 1 },
+    "instanceId": { "type": "string", "format": "uuid" },
+    "company": {
+      "type": "object", "additionalProperties": false, "required": ["name", "slug"],
+      "properties": { "name": { "type": "string", "maxLength": 120 }, "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" } }
+    },
+    "createdAt": { "type": ["string", "null"], "format": "date-time" },
+    "core": {
+      "type": "object", "additionalProperties": false, "required": ["version"],
+      "properties": { "version": { "type": "string" } }
+    },
+    "layout": {
+      "type": "object", "additionalProperties": false, "required": ["base", "hub", "data", "files", "secrets"],
+      "properties": {
+        "base": { "description": "Base versionável (Git). Relativo à instância ou absoluto.", "type": "string" },
+        "hub": { "description": "Configuração do Hub e módulos customizados.", "type": "string" },
+        "data": { "description": "Dados operacionais (banco). Nunca versionar.", "type": "string" },
+        "files": { "description": "Arquivos privados. Nunca versionar.", "type": "string" },
+        "secrets": { "description": "Segredos da instância. Nunca versionar.", "type": "string" }
+      }
+    }
+  }
+}

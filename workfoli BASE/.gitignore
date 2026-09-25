@@ -1,0 +1,48 @@
+# Segredos: chaves de API nunca vão pro GitHub
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+
+# Claude Code (sessões e configurações pessoais, não devem ir pro repo)
+.claude/settings.local.json
+.claude/projects/
+.claude/sessions/
+.claude/shell-snapshots/
+.claude/telemetry/
+.claude/file-history/
+.claude/backups/
+CLAUDE.local.md
+
+# Dados locais do Codex
+.agents/settings.local.json
+.agents/sessions/
+
+# Dependências
+node_modules/
+
+# Arquivos temporários
+*.log
+*.tmp
+
+# Drop zone do usuário (só o README vai versionado)
+dados/*
+!dados/README.md
+
+# Arquivos de conferência gerados por `workfoli base upgrade` (revisar e apagar)
+.workfoli/upgrade/
+
+# Bancos e dados operacionais nunca pertencem à Base
+*.sqlite
+*.sqlite3
+*.db

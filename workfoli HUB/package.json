@@ -1,0 +1,74 @@
+{
+  "name": "workfoli-hub",
+  "version": "0.4.0",
+  "private": true,
+  "type": "module",
+  "description": "Workfoli Core e Hub: contrato da Base, instalação por empresa, Hub web, Local Agent e importador desktop.",
+  "author": "Workfoli",
+  "main": "dist-electron/apps/desktop/main/index.js",
+  "scripts": {
+    "workfoli": "node bin/workfoli.mjs",
+    "dev": "node scripts/dev.mjs",
+    "dev:hub": "node scripts/dev-hub.mjs",
+    "start": "electron .",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.renderer.json && tsc --noEmit -p tsconfig.hub-web.json",
+    "build": "npm run typecheck && node scripts/build.mjs && npm run build:hub",
+    "build:hub": "vite build --config vite.hub.config.ts",
+    "test": "tsx --test --test-timeout=120000 tests/*.test.ts",
+    "test:ui": "node scripts/smoke-hub.mjs",
+    "test:desktop": "node scripts/smoke-desktop.mjs",
+    "test:e2e": "node scripts/e2e-instance.mjs",
+    "analyze": "tsx scripts/analyze.ts",
+    "sync:contract": "node bin/workfoli.mjs sync-contract",
+    "package": "npm run build && electron-builder --win dir",
+    "package:portable": "npm run build && electron-builder --win portable"
+  },
+  "build": {
+    "appId": "com.workfoli.hub",
+    "productName": "Workfoli",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "resources/icon.png",
+      "package.json"
+    ],
+    "win": {
+      "target": "portable",
+      "icon": "resources/icon.ico",
+      "signExecutable": false
+    }
+  },
+  "dependencies": {
+    "@fontsource-variable/manrope": "^5.3.0",
+    "iconv-lite": "0.7.3",
+    "lucide-react": "1.47.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "tsx": "4.23.15",
+    "yauzl": "3.4.0",
+    "yazl": "3.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/yauzl": "3.4.0",
+    "@types/yazl": "3.3.1",
+    "@vitejs/plugin-react": "6.1.1",
+    "electron": "44.4.4",
+    "electron-builder": "26.15.3",
+    "playwright": "1.63.0",
+    "typescript": "7.0.2",
+    "vite": "8.3.0"
+  },
+  "bin": {
+    "workfoli": "bin/workfoli.mjs"
+  },
+  "engines": {
+    "node": ">=22.13"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "$schema": "./schemas/workfoli.base.schema.json",
+  "format": "workfoli-base",
+  "schemaVersion": 3,
+  "baseId": null,
+  "status": "template",
+  "template": { "id": "workfoli-base", "version": "3.0.0" },
+  "createdAt": null,
+  "company": {
+    "name": "[Nome da empresa]",
+    "slug": "empresa",
+    "segment": null,
+    "description": null,
+    "tagline": null,
+    "website": null,
+    "locale": "pt-BR",
+    "timezone": "America/Sao_Paulo"
+  },
+  "profile": "general",
+  "identity": { "guide": "identidade/design-guide.md", "logo": null, "symbol": null },
+  "context": {
+    "memory": "_memoria",
+    "identity": "identidade",
+    "tasks": "tarefas.md",
+    "rules": "AGENTS.md",
+    "knowledge": ["_memoria", "servicos", "processos", "conhecimento", "infraestrutura"]
+  },
+  "services": [],
+  "projects": [],
+  "modules": {
+    "enabled": [
+      "overview",
+      "company",
+      "knowledge",
+      "projects",
+      "files",
+      "tasks",
+      "crm",
+      "marketing",
+      "integrations",
+      "ai",
+      "history",
+      "users",
+      "settings"
+    ]
+  },
+  "crm": {
+    "enabled": true,
+    "labels": {},
+    "currency": "BRL",
+    "pipelines": [
+      {
+        "id": "vendas",
+        "name": "Funil de vendas",
+        "default": true,
+        "stages": [
+          { "id": "novo-lead", "name": "Novo lead", "kind": "open", "probability": 10 },
+          { "id": "contato-realizado", "name": "Contato realizado", "kind": "open", "probability": 20 },
+          { "id": "qualificado", "name": "Qualificado", "kind": "open", "probability": 40 },
+          { "id": "proposta", "name": "Proposta", "kind": "open", "probability": 60, "requiredFields": ["value"] },
+          { "id": "negociacao", "name": "Negociação", "kind": "open", "probability": 80, "requiredFields": ["value"] },
+          { "id": "ganho", "name": "Ganho", "kind": "won", "probability": 100 },
+          { "id": "perdido", "name": "Perdido", "kind": "lost", "probability": 0 }
+        ]
+      }
+    ],
+    "customFields": [],
+    "sources": [],
+    "lostReasons": ["Preço", "Prazo", "Sem resposta", "Escolheu outra opção", "Sem orçamento no momento", "Outro"],
+    "automations": [],
+    "integrations": []
+  },
+  "integrations": [],
+  "assets": [],
+  "resources": [],
+  "roles": [],
+  "data": {
+    "versionable": [
+      "_memoria",
+      "identidade",
+      "servicos",
+      "projetos",
+      "processos",
+      "conhecimento",
+      "infraestrutura",
+      "marketing",
+      "saidas",
+      "templates",
+      "scripts",
+      ".claude/skills",
+      ".agents/skills"
+    ],
+    "private": ["dados"]
+  }
+}

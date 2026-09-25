@@ -1,0 +1,71 @@
+# Dependências
+node_modules/
+
+# Builds
+dist/
+build/
+out/
+.next/
+
+# Ambiente / segredos
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+
+# Temporários
+tmp/
+temp/
+.cache/
+
+# Dados locais do app
+data/
+storage/
+database/
+*.db
+*.sqlite
+*.sqlite3
+
+# Arquivos de clientes / imports
+imports/
+clients/
+workspaces/
+fixtures/private/
+
+# Arquivos compactados
+*.zip
+*.rar
+*.7z
+
+# Credenciais e chaves
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Perfis/sessões de navegador
+browser-profiles/
+sessions/
+cookies/
+
+# Artefatos locais de implementação e validação
+dist-electron/
+release/
+test-results/
+coverage/
+*.tsbuildinfo
+
+# Interface web do Hub (gerada por npm run build:hub)
+dist-hub/
