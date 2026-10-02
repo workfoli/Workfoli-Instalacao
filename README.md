@@ -13,7 +13,7 @@ O Hub foi retirado do projeto. A Base funciona diretamente com arquivos, Claude 
 |---|---|
 | `workfoli BASE/` | Modelo genérico da Base |
 | `instances/<empresa>/base/` | Base privada de cada empresa, fora do Git deste repositório |
-| `_backups/` | Arquivos locais preservados; nunca enviados ao GitHub |
+| Acervo histórico | Preservado nas instalações privadas, fora deste repositório |
 
 ## Criar uma Base
 

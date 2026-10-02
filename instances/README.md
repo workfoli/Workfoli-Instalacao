@@ -6,5 +6,6 @@ Para uma empresa nova, copie o modelo `workfoli BASE/` para uma pasta vazia e ex
 
 Nada das instâncias volta para os modelos ou para este repositório público.
 `data/`, `files/` e `secrets/` existentes continuam privados e preservados.
-Hubs antigos estão em `_backups/2026-10-02-remocao-hub/` nas respectivas pastas.
+Configurações antigas dos Hubs ficam em `files/acervo-tecnico/hub-descontinuado/`
+das instalações. Documentos anteriores ficam em `base/conhecimento/historico/`.
 Backups locais não substituem uma cópia de segurança em outro dispositivo.

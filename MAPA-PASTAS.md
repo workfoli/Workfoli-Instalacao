@@ -1,10 +1,9 @@
 # Mapa de pastas — 2026-10-02
 
-- Base para trabalhar: `workfoli BASE/`.
 - `workfoli BASE/`: modelo genérico, sem dados de empresas.
-- `instances/`: instalações privadas, preservadas e fora do Git do modelo.
-- `_backups/2026-10-02-remocao-hub/workfoli HUB/`: código antigo do Hub preservado, com inventário de integridade.
-- `_backups/2026-10-02-remocao-hub/documentos-originais/`: versões anteriores dos documentos ajustados.
+- `instances/`: instalações privadas, fora do Git do modelo.
+- O código anterior do Hub e os registros da reorganização foram preservados na instalação privada da Workfoli, fora deste repositório.
+- Documentos anteriores das empresas ficam no histórico da própria Base; configurações antigas ficam nas camadas privadas das instalações.
 
-A Base mantém os caminhos existentes para preservar links, scripts, projetos e materiais.
+A Base mantém seus caminhos para preservar links, scripts, projetos e materiais.
 Não iniciar ou restaurar o Hub sem pedido explícito.

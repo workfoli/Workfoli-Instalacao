@@ -7,7 +7,7 @@ Estas regras valem para a manutenção do modelo da Workfoli Base. Dentro de
 - `workfoli BASE/` é um modelo genérico: nada de dados de clientes, nem em testes.
   Use dados sintéticos e e-mails em `exemplo.test`.
 - Instâncias ficam em `instances/`, fora do Git. Seu conteúdo nunca volta para o modelo.
-- O Hub foi arquivado em `_backups/`. Não iniciar, instalar ou restaurar sem pedido explícito.
+- O Hub foi retirado do projeto e preservado na instalação privada da Workfoli. Não iniciar, instalar ou restaurar sem pedido explícito.
 - O contrato e o schema da Base ficam em `workfoli BASE/scripts/workfoli-contract.mjs`
   e `workfoli BASE/schemas/workfoli.base.schema.json`. Preservar o formato das Bases existentes.
 - Antes de concluir: `npm.cmd run validar` dentro de `workfoli BASE`. Depois de editar
