@@ -1,17 +1,4 @@
-# Instalações das empresas: nunca vão para este repositório (só o README)
-instances/*
-!instances/README.md
-
-# Dependências e builds
-node_modules/
-dist/
-dist-electron/
-dist-hub/
-release/
-test-results/
-tmp/
-
-# Segredos e dados locais
+# Segredos: chaves de API e tokens nunca vão pro GitHub
 .env
 .env.*
 !.env.example
@@ -19,16 +6,58 @@ tmp/
 *.key
 *.p12
 *.pfx
+secrets/
+
+# Configuração local do MCP (pode conter token)
+.mcp.json
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+
+# Claude Code (sessões e configurações pessoais, não devem ir pro repo)
+.claude/settings.local.json
+.claude/projects/
+.claude/sessions/
+.claude/shell-snapshots/
+.claude/telemetry/
+.claude/file-history/
+.claude/backups/
+CLAUDE.local.md
+
+# Dados locais do Codex
+.agents/settings.local.json
+.agents/sessions/
+
+# Dependências e builds
+node_modules/
+dist/
+test-results/
+tmp/
+
+# Arquivos temporários
+*.log
+*.tmp
+
+# Drop zone do usuário (só o README vai versionado)
+dados/*
+!dados/README.md
+
+# Arquivos de conferência gerados por `workfoli base upgrade` (revisar e apagar)
+.workfoli/upgrade/
+
+# Bancos e dados operacionais nunca pertencem a esta pasta
 *.sqlite
 *.sqlite3
 *.db
 
-# Material local que não faz parte do produto
+# Acervo preservado local
 _backups/
 
-# Sistema e editores
-.DS_Store
-Thumbs.db
-desktop.ini
-.vscode/
-.idea/
+# Estrutura antiga (instances/<empresa>/base): instalações privadas, nunca versionar
+instances/

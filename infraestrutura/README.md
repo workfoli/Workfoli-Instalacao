@@ -11,6 +11,5 @@ Onde cada coisa roda e quem é responsável, para que o próximo trabalho não c
 | Anúncios | [Google Ads / Meta] | | |
 
 As integrações também entram em `workfoli.base.json` → `integrations[]`, apenas com o **nome** das
-credenciais (ex.: `GITHUB_TOKEN`). Os valores ficam na pasta `secrets/` da instância da empresa
-(ou no `.env` local, ignorado pelo Git, quando um script da Base precisar). Nunca escreva uma
-senha, token ou chave nesta pasta.
+credenciais (ex.: `GITHUB_TOKEN`). Os valores ficam no `.env` local ou em `secrets/`, ambos
+ignorados pelo Git. Nunca escreva senha, token ou chave aqui nem em outro arquivo versionado.

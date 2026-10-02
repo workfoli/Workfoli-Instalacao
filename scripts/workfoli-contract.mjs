@@ -240,7 +240,7 @@ export function isSafeRelativePath(value) {
 
 function relativePath(c, value, path, nullable = false) {
   if (value === null && nullable) return null;
-  if (!isSafeRelativePath(value)) return c.error(path, 'caminho relativo inválido (use / e nada fora da Base)');
+  if (!isSafeRelativePath(value)) return c.error(path, 'caminho relativo inválido (use / e nada fora desta pasta)');
   return /** @type {string} */ (value).normalize('NFC');
 }
 
@@ -874,10 +874,10 @@ function validateBaseCore(c, source, version, options) {
     else c.error('schemaVersion', `versão não suportada (esperado ${BASE_SCHEMA_VERSION})`);
   }
   const status = oneOf(c, raw.status, 'status', BASE_STATUSES);
-  if (options.expect && options.expect !== 'any' && status && status !== options.expect) c.error('status', options.expect === 'active' ? 'esta pasta ainda é o template; rode `workfoli base init` para criar a Base da empresa' : 'o template precisa manter status "template"');
+  if (options.expect && options.expect !== 'any' && status && status !== options.expect) c.error('status', options.expect === 'active' ? 'esta pasta ainda é o modelo; rode /instalar para cadastrar a empresa' : 'o template precisa manter status "template"');
   const baseId = uuid(c, raw.baseId, 'baseId', true);
   if (status === 'active' && baseId === null) c.error('baseId', 'Base ativa precisa de identificador');
-  if (status === 'template' && baseId) c.error('baseId', 'o template não pode ter identificador; cada Base recebe o seu na criação');
+  if (status === 'template' && baseId) c.error('baseId', 'o modelo não pode ter identificador; cada empresa recebe o seu no /instalar');
   const manifest = { format: BASE_FORMAT, schemaVersion: version, baseId, status };
   if (Object.hasOwn(raw, 'template')) {
     const template = object(c, raw.template, 'template', ['id', 'version'], ['id', 'version']);

@@ -15,15 +15,7 @@ description: >
 
 ## Pré-checagem
 
-### 1. Nome da pasta
-
-Conferir o nome da pasta atual. Se for genérico (`workfoli`, `workfoli-main`, `workfoli BASE` ou parecido):
-
-> "A pasta ainda tem nome genérico ('<nome-atual>'). O ideal é ela ter o nome do seu negócio. No fim do setup eu mostro como renomear, leva 30 segundos. Bora?"
-
-Guardar o nome atual pra Fase 5.
-
-### 2. Memória já preenchida?
+### Memória já preenchida?
 
 Conferir se `_memoria/empresa.md`, `_memoria/preferencias.md`, `_memoria/estrategia.md` ou `identidade/design-guide.md` já têm conteúdo real (não só os campos vazios do molde) e se o `AGENTS.md` já tem a seção `## Sobre este negócio`.
 
@@ -104,11 +96,11 @@ Se vieram cores, fontes ou logo (perguntas 11 e 12), preencher os campos corresp
 ### `tarefas.md`
 Adicionar em "Agora": `- [ ] Rodar /mapear-rotinas pra tirar das costas: <resposta 10>`
 
-### `workfoli.base.json` (manifesto da Base)
+### `workfoli.base.json` (manifesto)
 É o índice local que os agentes leem. Editar só os campos abaixo, mostrando a alteração antes de gravar:
 
-- Se `status` ainda for `"template"` (pasta clonada direto do template): trocar para `"active"`, preencher `baseId` com um UUID novo (`node -e "console.log(crypto.randomUUID())"`) e `createdAt` com a data/hora atual em ISO 8601. Se a Base já foi ativada, esses campos já vêm prontos: não mexer.
-- `company.name` (resposta 1), `company.slug` (mesmo slug da Fase 5), `company.description` (resposta 2, uma frase), `company.website` (resposta 6, só se houver URL; senão `null`).
+- Se `status` ainda for `"template"` (pasta recém-clonada do modelo): trocar para `"active"`, preencher `baseId` com um UUID novo (`node -e "console.log(crypto.randomUUID())"`) e `createdAt` com a data/hora atual em ISO 8601. Se a pasta já foi ativada, esses campos já vêm prontos: não mexer.
+- `company.name` (resposta 1), `company.slug` (resposta 1 em minúsculas, sem acentos, espaços viram hífen, sem caracteres especiais; ex.: "Acme Empresa Ltda" → `acme-empresa-ltda`), `company.description` (resposta 2, uma frase), `company.website` (resposta 6, só se houver URL; senão `null`).
 - `profile`: Solopreneur → `general`, Freelancer → `services`, Agência → `agency`, Empresa → `general`.
 - `services`: um item por serviço citado nas respostas 2 e 4, com `id` em minúsculas e hífens, `name` e `summary` curtos. Criar também `servicos/<id>.md` a partir do modelo em `servicos/README.md` só com o que foi dito (lacunas ficam `[A CONFIRMAR]`).
 - `identity.logo`: caminho do logo, se a pessoa colocou o arquivo em `identidade/`.
@@ -144,19 +136,27 @@ Se a pessoa corrigir a prioridade, ajustar `estrategia.md` na hora.
 
 ---
 
-## Fase 5 — Renomear a pasta (se necessário)
+## Fase 5 — Desligar do modelo público
 
-Se a pasta ainda tem nome genérico (visto na pré-checagem), gerar um nome a partir da resposta 1: minúsculas, sem acentos, espaços viram hífen, sem caracteres especiais. Ex: "Acme Empresa Ltda" → `acme-empresa-ltda`.
+Quem clona o Workfoli recebe a pasta ligada ao modelo público (`github.com/workfoli/workfoli`). Agora que a pasta é da empresa, nenhum envio pode ir para lá.
 
-> "Última coisa: a pasta ainda se chama '<nome-atual>'. Pra ter a cara do seu negócio, sugiro renomear pra '<slug>'.
->
-> 1. Feche o VS Code
-> 2. Renomeie a pasta no Explorer (Windows) ou no Finder (Mac)
-> 3. Abra o VS Code de novo na pasta renomeada
->
-> Se preferir outro nome, me fala que eu ajusto a sugestão."
+Conferir, nesta ordem:
+1. `git rev-parse --show-toplevel` aponta para esta pasta (não para uma pasta acima dela);
+2. `git remote get-url origin` aponta para `github.com/workfoli/workfoli`.
 
-Se a pasta já tem nome próprio, pular esta fase.
+Se as duas condições valerem, rodar:
+
+```
+git remote rename origin workfoli
+git remote set-url --push workfoli DESATIVADO
+git branch --unset-upstream
+```
+
+O modelo continua disponível como remoto `workfoli` para consultar novidades (`git fetch workfoli`), mas não aceita envio. Avisar em uma linha:
+
+> "Desliguei esta pasta do modelo público do Workfoli: nada da sua empresa vai para lá. Quando quiser guardar no seu GitHub, roda `/salvar` que eu configuro um repositório privado."
+
+Se a pasta não for repositório Git, não tiver `origin` ou o `origin` já apontar para outro repositório, pular esta fase.
 
 ---
 
@@ -169,7 +169,7 @@ Se a pasta já tem nome próprio, pular esta fase.
 > Você disse que repete '<resposta 10>' toda semana. Quando quiser tirar isso das costas de vez, roda `/mapear-rotinas` que eu transformo em skill sua."
 
 Mencionar também:
-- `/salvar` pra guardar tudo no GitHub (backup e histórico)
+- `/salvar` pra guardar tudo num repositório privado no GitHub (backup e histórico)
 - `npm install` uma vez, se a pessoa for gerar carrossel ou PDF
 
 ---

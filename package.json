@@ -1,7 +1,7 @@
 {
   "name": "workfoli",
   "private": true,
-  "description": "Workfoli Base: estrutura de contexto e operação de uma empresa (Claude Code e Codex)",
+  "description": "Workfoli: estrutura de contexto e operação de uma empresa (Claude Code e Codex)",
   "scripts": {
     "render": "node scripts/render.js",
     "validar": "node scripts/validar.mjs",

@@ -18,27 +18,44 @@ Uma função só: garantir que o trabalho do usuário está seguro no GitHub. Pr
 
 ## Checagem de segurança (sempre, antes de qualquer commit)
 
-1. Confirmar que o `.gitignore` contém `.env`. Se não contiver, adicionar a linha.
-2. Rodar `git ls-files .env` (em repositório já existente). Se retornar algo, o `.env` está versionado: parar, avisar o usuário e oferecer `git rm --cached .env` antes de seguir.
-3. Olhar os arquivos que vão entrar no commit. Se aparecer algo com cara de segredo (`.env*`, `*.pem`, `*.key`, `credentials*.json`, `token*`), parar e perguntar antes de incluir.
-4. Nada de `dados/`, bancos (`*.sqlite`, `*.db`), planilhas de clientes ou documentos pessoais entra no commit: se aparecer, parar e explicar que esse material fica fora do Git (camadas privadas da instância).
+1. Confirmar que o `.gitignore` contém `.env`, `.mcp.json` e `secrets/`. Se faltar alguma, adicionar a linha.
+2. Rodar `git ls-files .env .mcp.json secrets` (em repositório já existente). Se retornar algo, há segredo versionado: parar, avisar o usuário e oferecer `git rm --cached <arquivo>` antes de seguir.
+3. Olhar os arquivos que vão entrar no commit. Se aparecer algo com cara de segredo (`.env*`, `.mcp.json`, `*.pem`, `*.key`, `credentials*.json`, `token*`), parar e perguntar antes de incluir.
+4. Nada de `dados/`, bancos (`*.sqlite`, `*.db`), planilhas de clientes ou documentos pessoais entra no commit: se aparecer, parar e explicar que esse material fica só na máquina ou fora desta pasta, nunca no Git.
 5. Rodar `npm run validar`. Manifesto inválido: corrigir antes de salvar.
 
 ## Workflow
 
-### Primeira vez (pasta ainda não é repositório)
+### Antes de tudo: para onde vai o envio
 
-Detectar com `git rev-parse --is-inside-work-tree`. Se falhar:
+Quem clona o Workfoli recebe a pasta ligada ao modelo público (`github.com/workfoli/workfoli`). O trabalho da empresa nunca vai para lá. Conferir nesta ordem:
+
+1. `git rev-parse --show-toplevel`. Se falhar, ou se apontar para uma pasta acima desta, a pasta ainda não tem repositório próprio: seguir para **Primeira vez**, começando com `git init`.
+2. `git remote get-url origin`. Se apontar para `github.com/workfoli/workfoli`, desligar o modelo antes de qualquer envio e seguir para **Primeira vez**:
+   ```
+   git remote rename origin workfoli
+   git remote set-url --push workfoli DESATIVADO
+   git branch --unset-upstream
+   ```
+   Avisar em uma linha: "Esta pasta ainda estava ligada ao modelo público do Workfoli. Desliguei esse vínculo para nada da sua empresa ir para lá."
+3. Sem `origin`: seguir para **Primeira vez**.
+4. `origin` aponta para outro repositório: seguir para **Das próximas vezes**.
+
+Exceção: se `workfoli.base.json` estiver com `"status": "template"`, esta pasta é o próprio modelo. Enviar para o modelo público só com pedido explícito de quem mantém o Workfoli.
+
+### Primeira vez
 
 1. Perguntar:
    > "É a primeira vez que vamos salvar no GitHub. Você já criou um repositório pra este projeto?
    > 1. Sim, aqui está a URL (ex: https://github.com/seu-usuario/nome-do-negocio.git)
    > 2. Não, cria pra mim: me diz um nome pro repositório (ex: nome-do-negocio)"
 
-2. **Opção 1:** `git init` → checagem de segurança → `git add .` → `git commit -m "Setup inicial do Workfoli"` → `git branch -M main` → `git remote add origin <URL>` → `git push -u origin main`.
+   Se a URL informada for a do modelo público, recusar e pedir a do repositório da empresa.
+
+2. **Opção 1:** `git init` (só se a pasta ainda não tiver repositório próprio) → checagem de segurança → `git add .` → `git commit -m "Setup inicial do Workfoli"` → `git branch -M main` → `git remote add origin <URL>` → `git push -u origin main`.
 
 3. **Opção 2:** verificar se o GitHub CLI está instalado (`gh --version`).
-   - Se estiver: `git init` → checagem de segurança → commit inicial → `gh repo create <nome> --private --source=. --push`.
+   - Se estiver: `git init` (só se necessário) → checagem de segurança → commit inicial → `gh repo create <nome> --private --source=. --push`.
    - Se não: orientar a instalação do `gh` (Windows: `winget install GitHub.cli`; Mac: `brew install gh`; depois `gh auth login`) ou a criação manual do repositório em https://github.com/new, e voltar pra opção 1 com a URL.
 
 Repositório novo é sempre **privado**, a menos que o usuário peça o contrário.
@@ -60,3 +77,4 @@ Repositório novo é sempre **privado**, a menos que o usuário peça o contrár
 - Nunca rodar `git reset --hard` ou outro comando destrutivo sem confirmação clara
 - Se o push falhar por divergência (alguém mudou o remoto), explicar em linguagem simples e oferecer `git pull --rebase` antes de tentar de novo
 - Nunca pular a checagem de segurança
+- Nunca enviar a pasta de uma empresa (`"status": "active"`) para o modelo público `github.com/workfoli/workfoli`

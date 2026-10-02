@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Valida o manifesto desta Base (workfoli.base.json) com o contrato Workfoli. Sem dependências.
+// Valida o manifesto desta pasta (workfoli.base.json) com o contrato Workfoli. Sem dependências.
 // Uso: npm run validar   (ou: node scripts/validar.mjs)
 // A validação completa (credenciais em arquivos, .gitignore, lock do template) existia
 // nas ferramentas arquivadas; este validador funciona de forma independente.
@@ -12,7 +12,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const file = path.join(root, BASE_MANIFEST_FILE);
 
 if (!existsSync(file)) {
-  console.error(`✗ ${BASE_MANIFEST_FILE} não encontrado na raiz da Base.`);
+  console.error(`✗ ${BASE_MANIFEST_FILE} não encontrado na raiz da pasta.`);
   process.exit(2);
 }
 
@@ -40,7 +40,7 @@ for (const warning of result.warnings) console.warn(`! ${warning.path}: ${warnin
 for (const value of [...new Set(missing)]) console.warn(`! caminho declarado não existe: ${value}`);
 
 if (manifest.status === 'template') {
-  console.log('✓ Template da Base válido. Para criar a Base de uma empresa: copie o modelo para uma pasta vazia e rode /instalar ou $instalar.');
+  console.log('✓ Modelo do Workfoli válido. Para cadastrar sua empresa, rode /instalar (Claude Code) ou $instalar (Codex) nesta pasta.');
 } else {
-  console.log(`✓ Base válida: ${manifest.company.name} — ${manifest.services.length} serviço(s), ${manifest.projects.length} projeto(s), ${manifest.integrations.length} integração(ões).`);
+  console.log(`✓ Workfoli válido: ${manifest.company.name} — ${manifest.services.length} serviço(s), ${manifest.projects.length} projeto(s), ${manifest.integrations.length} integração(ões).`);
 }
