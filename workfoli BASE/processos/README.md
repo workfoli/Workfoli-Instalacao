@@ -21,4 +21,4 @@ O objetivo é que qualquer pessoa (ou agente) execute do mesmo jeito sem pergunt
 ```
 
 Processos descrevem **como** trabalhar. Registros de pessoas (clientes, pacientes, contatos) ficam
-no banco do Workfoli Hub, nunca em Markdown desta pasta.
+na camada privada da instalação, nunca em Markdown desta pasta.

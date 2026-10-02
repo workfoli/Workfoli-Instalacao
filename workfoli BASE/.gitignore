@@ -46,3 +46,6 @@ dados/*
 *.sqlite
 *.sqlite3
 *.db
+
+# Acervo preservado local
+_backups/

@@ -1,15 +1,10 @@
-# instances/ — instalações das empresas (privado)
+# Instâncias privadas
 
-Cada subpasta é a Workfoli de **uma** empresa: Base, configuração do Hub, dados operacionais, arquivos privados e
-credenciais. Nada aqui é modelo e nada daqui volta para `workfoli BASE` ou `workfoli HUB`.
+Cada empresa mantém sua Base em `<empresa>/base/`. Abra essa pasta no Claude Code ou Codex.
+Para uma empresa nova, copie o modelo `workfoli BASE/` para uma pasta vazia e execute
+`/instalar` ou `$instalar` dentro da cópia. Valide com `npm.cmd run validar`.
 
-Esta pasta fica fora do Git (só este README é versionado). Não compartilhe as instâncias: elas contêm dados
-privados e segredos.
-
-Criar uma empresa (na pasta `workfoli HUB`):
-
-```powershell
-node bin/workfoli.mjs init nome-da-empresa --name "Nome da Empresa" --profile services
-```
-
-Backup: pare o Hub e copie a pasta da instância inteira para um destino cifrado.
+Nada das instâncias volta para os modelos ou para este repositório público.
+`data/`, `files/` e `secrets/` existentes continuam privados e preservados.
+Hubs antigos estão em `_backups/2026-10-02-remocao-hub/` nas respectivas pastas.
+Backups locais não substituem uma cópia de segurança em outro dispositivo.

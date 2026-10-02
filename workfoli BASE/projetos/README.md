@@ -1,7 +1,7 @@
 # projetos/ — sites, landing pages, campanhas, sistemas e iniciativas
 
 Uma pasta por projeto: `projetos/<id>/`, com `README.md` (objetivo, briefing, status) e as entregas
-nas subpastas. Criada pelo `/novo-projeto` (Claude Code), `$novo-projeto` (Codex) ou pelo Workfoli Hub.
+nas subpastas. Criada pelo `/novo-projeto` (Claude Code), `$novo-projeto` (Codex).
 
 Todo projeto também é registrado em `workfoli.base.json` → `projects[]`:
 

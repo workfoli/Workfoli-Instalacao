@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // Valida o manifesto desta Base (workfoli.base.json) com o contrato Workfoli. Sem dependências.
 // Uso: npm run validar   (ou: node scripts/validar.mjs)
-// A validação completa (credenciais em arquivos, .gitignore, lock do template) fica em
-// `workfoli base validate <pasta>`, na CLI do Workfoli Hub.
+// A validação completa (credenciais em arquivos, .gitignore, lock do template) existia
+// nas ferramentas arquivadas; este validador funciona de forma independente.
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -40,7 +40,7 @@ for (const warning of result.warnings) console.warn(`! ${warning.path}: ${warnin
 for (const value of [...new Set(missing)]) console.warn(`! caminho declarado não existe: ${value}`);
 
 if (manifest.status === 'template') {
-  console.log('✓ Template da Base válido. Para criar a Base de uma empresa: `workfoli init <slug> --name "Empresa"` (CLI do Hub) ou rode o /instalar.');
+  console.log('✓ Template da Base válido. Para criar a Base de uma empresa: copie o modelo para uma pasta vazia e rode /instalar ou $instalar.');
 } else {
   console.log(`✓ Base válida: ${manifest.company.name} — ${manifest.services.length} serviço(s), ${manifest.projects.length} projeto(s), ${manifest.integrations.length} integração(ões).`);
 }

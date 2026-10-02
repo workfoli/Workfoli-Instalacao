@@ -1,8 +1,8 @@
 // Workfoli contract: Base ↔ Hub ↔ Instância.
 //
-// Fonte canônica: `workfoli HUB/packages/contract/workfoli-contract.mjs`.
-// A Base recebe uma cópia idêntica em `scripts/workfoli-contract.mjs` (npm run sync:contract no Hub).
-// Não edite a cópia da Base: edite aqui e sincronize.
+// Fonte da Base: `scripts/workfoli-contract.mjs`.
+// Contrato legado preservado para validar as Bases existentes sem depender do Hub.
+// Manter o formato compatível com os manifestos existentes.
 //
 // Sem dependências e sem IO: recebe JSON já interpretado e devolve { ok, value, errors, warnings }.
 // Mensagens nunca repetem valores recebidos (podem conter segredos ou caracteres de controle).

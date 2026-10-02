@@ -16,19 +16,7 @@ sua própria Base, criada a partir dela.
 
 ## Criar a Base de uma empresa
 
-### Pela CLI do Workfoli Hub (recomendado)
-
-Na pasta do Workfoli Hub:
-
-```bash
-node bin/workfoli.mjs init nome-da-empresa --name "Nome da Empresa" --profile services
-```
-
-Isso cria `instances/nome-da-empresa/base/` a partir deste template (com identificador próprio,
-manifesto preenchido, repositório Git local e lock do template), sem alterar o template.
-Depois, dentro da Base, rode o `/instalar` (Claude Code) ou `$instalar` (Codex) para a entrevista.
-
-### Manualmente
+### Copiar o modelo
 
 Copie ou clone este template para uma pasta vazia com o nome da empresa, abra no Claude Code ou
 no Codex e rode `/instalar` / `$instalar`. O `/instalar` ativa o manifesto (`status: active`,
@@ -57,25 +45,24 @@ carrosséis/propostas: `npm install` uma vez).
 | `.claude/skills/`, `.agents/skills/` | Skills (fonte em `.claude`, espelho para o Codex) |
 | `AGENTS.md` / `CLAUDE.md` | Regras dos agentes (fonte única no `AGENTS.md`) |
 
-## O contrato com o Workfoli Hub
+## Manifesto e validação
 
-O **Workfoli Hub** é a camada visual opcional instalada depois, sobre uma Base madura. Ele não
-varre pastas tentando adivinhar: lê o `workfoli.base.json`, validado pelo mesmo contrato do Core
-(`scripts/workfoli-contract.mjs`, cópia sincronizada; `schemas/workfoli.base.schema.json`).
+O `workfoli.base.json` é o índice da Base, validado localmente por
+`scripts/workfoli-contract.mjs` e `schemas/workfoli.base.schema.json`. Não exige Hub.
 
-```bash
-npm run validar
+```powershell
+npm.cmd run validar
 ```
 
-Instalar o Hub sobre esta Base (na pasta do Workfoli Hub): `node bin/workfoli.mjs hub install <instância>`.
-A empresa não é cadastrada de novo: nome, identidade, serviços, projetos e módulos vêm daqui.
+O formato existente é preservado por compatibilidade. Campos legados de CRM, módulos
+e papéis não ativam serviços nem concedem acesso.
 
 ## Camadas de dados
 
 | Camada | Onde fica | Git |
 |---|---|---|
 | Base versionável (identidade, serviços, processos, projetos, conhecimento, skills, código) | Esta pasta | Repositório privado da empresa |
-| Dados operacionais (CRM, clientes, pacientes, agenda, tarefas da equipe) | Banco do Hub na instância | Nunca |
+| Dados operacionais (CRM, clientes, pacientes, agenda, tarefas da equipe) | Camada privada da instalação, fora da Base | Nunca |
 | Arquivos privados (contratos, documentos, mídia privada) | `files/` da instância | Nunca |
 | Segredos (API keys, OAuth, tokens) | `secrets/` da instância; `.env` local só para scripts | Nunca |
 
@@ -83,13 +70,9 @@ Dados médicos, CPF, dados de pacientes e documentos pessoais nunca entram nesta
 
 ## Atualizar uma Base existente quando o template evoluir
 
-```bash
-node bin/workfoli.mjs base upgrade <pasta-da-base>          # simulação
-node bin/workfoli.mjs base upgrade <pasta-da-base> --apply  # aplica
-```
-
-Arquivos que a empresa não mexeu recebem a versão nova; arquivos customizados ficam como estão;
-quando os dois mudaram, a versão do template vai para `.workfoli/upgrade/` para revisão. Nada é apagado.
+Compare as mudanças do modelo com a Base da empresa e aplique apenas o necessário,
+com backup prévio. Preserve memória, identidade, projetos, skills e arquivos personalizados.
+Não copie o modelo inteiro sobre uma Base existente. Valide ao terminar.
 
 ---
 

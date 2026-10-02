@@ -93,7 +93,7 @@ dashboard → `dashboard`, dados/relatório → `data`, marca → `brand`; senã
 atende um serviço já listado em `services[]`, incluir `"services": ["<id>"]`. Rodar `npm run validar`.
 
 Dados de pessoas do cliente (contatos, pacientes, CPF) não entram no briefing nem no manifesto:
-eles pertencem ao CRM do Workfoli Hub.
+eles pertencem à camada privada da instalação, fora da Base e do Git.
 
 ### Passo 6 — Resumo
 

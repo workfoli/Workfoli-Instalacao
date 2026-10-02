@@ -17,7 +17,7 @@ description: >
 
 ### 1. Nome da pasta
 
-Conferir o nome da pasta atual. Se for genérico (`workfoliHUB`, `workfoliHUB-main`, `workfoli`, `workfoli-main`, `workfoli BASE` ou parecido):
+Conferir o nome da pasta atual. Se for genérico (`workfoli`, `workfoli-main`, `workfoli BASE` ou parecido):
 
 > "A pasta ainda tem nome genérico ('<nome-atual>'). O ideal é ela ter o nome do seu negócio. No fim do setup eu mostro como renomear, leva 30 segundos. Bora?"
 
@@ -105,9 +105,9 @@ Se vieram cores, fontes ou logo (perguntas 11 e 12), preencher os campos corresp
 Adicionar em "Agora": `- [ ] Rodar /mapear-rotinas pra tirar das costas: <resposta 10>`
 
 ### `workfoli.base.json` (manifesto da Base)
-É o índice que o Workfoli Hub lê. Editar só os campos abaixo, mostrando a alteração antes de gravar:
+É o índice local que os agentes leem. Editar só os campos abaixo, mostrando a alteração antes de gravar:
 
-- Se `status` ainda for `"template"` (pasta clonada direto do template): trocar para `"active"`, preencher `baseId` com um UUID novo (`node -e "console.log(crypto.randomUUID())"`) e `createdAt` com a data/hora atual em ISO 8601. Se a Base foi criada pelo `workfoli init`, esses campos já vêm prontos: não mexer.
+- Se `status` ainda for `"template"` (pasta clonada direto do template): trocar para `"active"`, preencher `baseId` com um UUID novo (`node -e "console.log(crypto.randomUUID())"`) e `createdAt` com a data/hora atual em ISO 8601. Se a Base já foi ativada, esses campos já vêm prontos: não mexer.
 - `company.name` (resposta 1), `company.slug` (mesmo slug da Fase 5), `company.description` (resposta 2, uma frase), `company.website` (resposta 6, só se houver URL; senão `null`).
 - `profile`: Solopreneur → `general`, Freelancer → `services`, Agência → `agency`, Empresa → `general`.
 - `services`: um item por serviço citado nas respostas 2 e 4, com `id` em minúsculas e hífens, `name` e `summary` curtos. Criar também `servicos/<id>.md` a partir do modelo em `servicos/README.md` só com o que foi dito (lacunas ficam `[A CONFIRMAR]`).

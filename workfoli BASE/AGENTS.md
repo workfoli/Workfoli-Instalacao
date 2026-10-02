@@ -24,7 +24,7 @@ pastas. Não anunciar essas leituras; usar o contexto naturalmente.
 
 | Pasta / arquivo | Conteúdo |
 |---|---|
-| `workfoli.base.json` | Manifesto da Base: empresa, serviços, projetos, módulos, integrações (contrato com o Workfoli Hub) |
+| `workfoli.base.json` | Manifesto da Base: empresa, serviços, projetos, módulos, integrações (índice local da empresa) |
 | `_memoria/` | Memória do negócio |
 | `identidade/` | Marca, logo e design-guide |
 | `servicos/` | Um arquivo por serviço ou produto |
@@ -45,7 +45,7 @@ Antes de criar uma pasta, conferir esse mapa. Arquivos datados usam
 
 ## Contrato da Base (`workfoli.base.json`)
 
-O manifesto é o índice estruturado da empresa. O Workfoli Hub e os agentes
+O manifesto é o índice estruturado da empresa. Os agentes
 descobrem por ele a empresa, identidade, serviços, projetos, módulos,
 integrações, ativos e papéis sugeridos, sem adivinhar pela estrutura de pastas.
 
@@ -56,38 +56,19 @@ integrações, ativos e papéis sugeridos, sem adivinhar pela estrutura de pasta
   renomear um `id` existente; mudar o `name`.
 - Integrações registram só o **nome** das credenciais (`"secrets": ["GITHUB_TOKEN"]`),
   nunca o valor.
-- Papéis em `roles` são apenas sugestões; quem concede acesso é o proprietário no Hub.
+- Papéis em `roles` são apenas sugestões; não concedem acesso a nenhum serviço.
 - Depois de editar, rodar `npm run validar`. Manifesto inválido não pode ser salvo
   no Git.
 - `baseId`, `status`, `template`, `createdAt` e `schemaVersion` não são editados à
   mão (são gerenciados pela instalação e pelas atualizações).
 
-## CRM: estrutura aqui, registros no Hub
+## Campos legados de CRM
 
-O CRM é nativo do Workfoli e genérico (serve a qualquer negócio). A Base guarda só a
-**estrutura** dele, na seção `crm` do manifesto. Contatos, empresas, leads,
-oportunidades, histórico e valores ficam no banco do Hub da empresa, nunca em
-arquivos desta pasta.
-
-| Na Base (`crm` no manifesto) | No Hub (banco da instância) |
-|---|---|
-| Funis e etapas (em aberto, ganho, perdido), probabilidade e campos exigidos por etapa | Oportunidades e a etapa de cada uma |
-| Campos personalizados (`customFields`) | Valores preenchidos em cada registro |
-| Origens extras (`sources`) e motivos de perda (`lostReasons`) | Origem e motivo de cada lead ou negócio |
-| Automações declarativas (criar tarefa, aplicar etiqueta) | Tarefas e etiquetas que elas criam |
-| Nomes das entidades (`labels`: Cliente, Aluno…) e moeda | — |
-| Vínculo com integrações (`integrations`: leads da Meta entram no CRM?) | A conexão da conta (tokens cifrados) |
-
-- Prefira editar pelo Hub (CRM → Configuração): ele valida e grava aqui. À mão também
-  vale; depois, `npm run validar`.
-- O `id` de uma etapa é permanente (as oportunidades apontam para ele): para renomear,
-  mude o `name`. Etapa com oportunidades abertas não pode ser removida.
-- Cada funil precisa de etapas em aberto, exatamente uma de ganho e uma de perda.
-- `crm.enabled` anda junto com `"crm"` em `modules.enabled`.
-- Nada de dados de pessoas aqui: nem lista de clientes, nem leads em Markdown. "Registre
-  o cliente X" vai para o CRM do Hub (a IA do Hub propõe o cadastro para confirmação).
-- Informação sensível (saúde, documentos pessoais) não vira campo personalizado: pede
-  módulo próprio, com controles.
+O manifesto mantém a configuração existente de CRM por compatibilidade. A Base não
+executa CRM, automações ou gestão de usuários. Não colocar contatos, leads, pacientes,
+históricos operacionais nem documentos pessoais no modelo ou no manifesto.
+Dados privados e bancos existentes permanecem fora da Base e fora do Git.
+Ao editar a configuração legada, preservar identificadores e rodar `npm.cmd run validar`.
 
 ## Camadas de dados
 
@@ -97,7 +78,7 @@ Por isso, cada tipo de informação tem o seu lugar:
 | Tipo | Onde fica |
 |---|---|
 | Identidade, serviços, processos, projetos, conhecimento, prompts, skills, código | Aqui, na Base |
-| Clientes, pacientes, contatos, agenda, tarefas da equipe, históricos operacionais | Banco do Workfoli Hub (instância da empresa) |
+| Clientes, pacientes, contatos, agenda, tarefas da equipe, históricos operacionais | Camada privada da instalação, fora da Base |
 | Contratos, documentos pessoais, imagens privadas, mídia clínica | Arquivos privados da instância (`files/`), fora do Git |
 | Senhas, tokens, chaves, OAuth | `secrets/` da instância; `.env` local só para scripts desta pasta (ignorado pelo Git) |
 
