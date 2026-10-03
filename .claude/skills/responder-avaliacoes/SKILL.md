@@ -76,6 +76,8 @@ Pra cada review, escrever **uma única resposta** seguindo o padrão acima.
 
 ### Passo 3 — Entregar em formato fácil de copiar
 
+Antes, conferir as respostas com o `/humanizar` (modo leve): nenhuma frase pronta de empresa grande, nenhuma resposta igual a outra.
+
 Listar cada resposta abaixo da review, pronta pra colar no Perfil da Empresa no Google. Formato:
 
 ```

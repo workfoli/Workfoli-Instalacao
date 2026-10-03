@@ -51,6 +51,8 @@ Estrutura:
 8. **Por que nós:** 2-3 provas concretas de `_memoria/empresa.md` (cases, números, anos de mercado). Nada inventado
 9. **Próximos passos:** o que o cliente faz pra aprovar (responder o e-mail, assinar, pagar a entrada)
 
+Passar o texto pelo `/humanizar` (modo leve): proposta com "soluções sob medida", "potencializar" e "excelência" parece modelo pronto.
+
 **CHECKPOINT:** mostrar o texto e esperar aprovação antes do visual.
 
 ### Passo 3 — Visual (HTML)

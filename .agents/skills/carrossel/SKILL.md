@@ -17,6 +17,8 @@ Skill central de conteúdo visual. Recebe um tema e entrega HTML estilizado, PNG
 - **Identidade visual:** `identidade/design-guide.md` (LER ANTES de criar qualquer visual)
 - **Contexto do negócio:** `_memoria/empresa.md` (@ das redes, contato, diferenciais)
 - **Tom de voz:** `_memoria/preferencias.md`
+- **Fórmulas de carrossel e regras de Instagram:** `.claude/skills/instagram/referencias/formulas-de-gancho.md` (G5 a G8) e `regras-de-voz.md`
+- **Revisão do texto:** `/humanizar` (modo leve) e regras do `/hashtags`
 - **Render:** `scripts/render.js` (Playwright). Na primeira vez, `npm install` na raiz do projeto
 - **Foto com IA (opcional):** `scripts/gerar-imagem.js` com `OPENAI_API_KEY` ou `GEMINI_API_KEY` no `.env`, ou um conector de imagem ativo
 - **Saída:** `marketing/conteudo/<tipo>-<tema>-<YYYY-MM-DD>/`
@@ -103,6 +105,23 @@ Cada slide tem um layout. Variar entre eles cria ritmo:
 - **Slides internos:** 2-3 layouts diferentes entre `SOLO`, `DUO`, `NÚMERO` e `CITAÇÃO`
 - **Slide final:** `CTA FINAL`
 
+### Fórmula e espinha do texto
+
+Escolher a fórmula pelo objetivo do post (detalhes em `.claude/skills/instagram/referencias/formulas-de-gancho.md`):
+
+| Objetivo | Fórmula | Espinha |
+|---|---|---|
+| Salvar | **G5 Lista** | capa promete N itens + ciclo ("a maioria erra a nº 4") → um item por slide, com exemplo → resumo |
+| Salvar e seguir | **G6 Antes e depois** | capa com o depois → slide 2 com o antes → um passo por slide → resultado + "segue pra ver mais" |
+| Enviar | **G7 Mito x verdade** | capa com N mitos e a perda concreta → "Mito:" / "Verdade:" por slide → "manda pra quem ainda acredita no nº 1" |
+| Salvar | **G8 Método** | capa com o método e o resultado → uma parte por slide, com o porquê → o método inteiro numa tela |
+
+- **A capa é o funil inteiro:** promessa + ciclo aberto, nunca título seco ("5 jeitos de X" ganha de "Dicas de X")
+- **Valor na frente:** o ponto mais forte vai no slide 2 ou 3, nunca guardado pro fim
+- **Um ponto por slide**, legível em 2 segundos no quadro 4:5. Detalhe vai na legenda
+- **Nunca encher pra chegar em 10.** Ideia de 5 pontos é carrossel de 7 slides (capa + 5 + fecho). Menos de 4 pontos reais: post único
+- **Fecho salvável:** em lista e método, o slide antes do `CTA FINAL` é o resumo numa tela (o que as pessoas salvam). O `CTA FINAL` faz **um** pedido só, com motivo ("salva pra usar na próxima encomenda")
+
 ### Sequência de capas no feed
 
 Antes de definir a capa, olhar a **última capa publicada** (pasta mais recente em `marketing/conteudo/`) pra alternar:
@@ -121,11 +140,13 @@ Seguir `_memoria/preferencias.md`. Em geral: frases naturais, sem jargão de mar
 
 Ao terminar os PNGs, gerar **automaticamente** a legenda e salvar em `legenda.md` na mesma pasta. **Não esperar o usuário pedir.** Estrutura:
 
-1. Gancho na primeira linha, em até ~125 caracteres (é o que aparece antes do "mais")
+1. Gancho na primeira linha, em até ~125 caracteres (é o que aparece antes do "mais"), repetindo a promessa da capa com outras palavras
 2. Contexto (1-2 frases sobre o conteúdo)
-3. CTA pra arrastar ("Arrasta pro lado")
+3. CTA pra arrastar ("Arrasta pro lado") e, se o objetivo for salvar ou enviar, o pedido com motivo
 4. Bloco de oferta (diferenciais e contato, de `_memoria/empresa.md`)
-5. Até 5 hashtags específicas (o Instagram considera no máximo 5 por post): nicho + público + local, se fizer sentido
+5. 3 a 5 hashtags dimensionadas pelas regras do `/hashtags` (2-3 de nicho, 1-2 médias, no máximo 1 ampla), com local se fizer sentido
+
+Antes de salvar, passar slides e legenda pelo `/humanizar` (modo leve).
 
 ---
 
@@ -136,14 +157,17 @@ Ao terminar os PNGs, gerar **automaticamente** a legenda e salvar em `legenda.md
 1. Usar `_memoria/preferencias.md` e `_memoria/empresa.md`
 2. Ler `identidade/design-guide.md` (cores, fontes, logo)
 3. Identificar o tipo (1, 2 ou 3)
-4. Definir tema e ângulo
+4. Definir tema, ângulo e objetivo (salvar, enviar ou seguir)
 
 ### Passo 2 — Texto
 
 **Carrossel (5-10 slides):**
-- Slide 1 (capa): título forte, no máximo 8 palavras. Oferecer 3 opções
-- Slides internos: uma ideia por slide, frases naturais, sem bullet points
-- Slide final: CTA + logo
+- Escolher a fórmula pelo objetivo (ver "Fórmula e espinha do texto"). Sugerir 2 e deixar o usuário escolher
+- Slide 1 (capa): promessa + ciclo aberto, no máximo 8-12 palavras. Oferecer 3 opções
+- Slides internos: uma ideia por slide, frases naturais, sem bullet points, o ponto mais forte no slide 2 ou 3
+- Resumo salvável (em lista e método) + slide final com um único CTA + logo
+- Número, resultado ou nome só se vier do usuário. Sem dado, perguntar uma vez ou cortar
+- Passar o texto pelo `/humanizar` (modo leve) antes do checkpoint
 
 **Post único:**
 - Frase principal em destaque
@@ -237,8 +261,13 @@ Se sim, chamar `/publicar-tema` com o mesmo tema.
 - Carrossel: 1080x1350 (4:5), sempre. TikTok/Reels: 1080x1920 (9:16), só quando pedido
 - Linguagem segue `_memoria/preferencias.md` à risca
 - Sempre considerar a sequência de capas no feed
-- Sempre gerar a legenda no final, em `legenda.md`, com no máximo 5 hashtags
+- Sempre gerar a legenda no final, em `legenda.md`, com 3 a 5 hashtags dimensionadas
+- Capa sempre com promessa; nunca esticar o carrossel pra chegar num número redondo; um único pedido no slide final
 - Foto com IA: prompt em inglês, aprovação antes de usar, nunca rostos ou pessoas identificáveis
 - Um único `carrossel.html` com todos os slides, CSS inline, render pelo `scripts/render.js`
 - Nunca mostrar slide sem ter conferido o PNG renderizado
 - Variar os layouts: nunca o mesmo layout em todos os slides
+
+## Créditos
+
+A seção "Fórmula e espinha do texto" foi adaptada do `ig-carousel-planner` do [instagram-skills](https://github.com/sergebulaev/instagram-skills) (MIT, Sergey Bulaev).

@@ -24,7 +24,7 @@ Se `_memoria/estrategia.md` tiver algo em "Pra tirar das costas", começar por a
 
 ### Passo 2 — Conferir o que já existe
 
-1. **Skills instaladas** em `.claude/skills/`. O Workfoli já cobre carrossel, blog, SEO, avaliações, propostas, Google Ads, relatório de ads, análise de dados e e-mail.
+1. **Skills instaladas** em `.claude/skills/`. O Workfoli já cobre carrossel, blog, SEO, avaliações, propostas, Google Ads, relatório de ads, análise de dados, e-mail, revisão de texto contra "cara de IA" (`/humanizar`) e o kit de Instagram (legenda, hashtags, calendário editorial, perfil, nicho, gancho de post de referência e reaproveitamento de conteúdo; ver `/instagram`).
 2. **Catálogo** em `templates/skills/catalogo.md` (skills oficiais da Anthropic e sugestões).
 
 Se algo já resolve a tarefa, sugerir em vez de criar:

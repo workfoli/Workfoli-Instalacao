@@ -1,6 +1,6 @@
 # Catálogo de skills
 
-Skills que vão além das 16 que já vêm no Workfoli (listadas no `README.md`). Use como
+Skills que vão além das 25 que já vêm no Workfoli (listadas no `README.md`). Use como
 referência ao criar skills novas com o `/mapear-rotinas`, ou instale as que fizerem sentido.
 
 > A fonte deste projeto fica em `.claude/skills/<nome>/SKILL.md` e é espelhada em
@@ -72,9 +72,26 @@ Estas **não vêm instaladas**. São skills que costumam valer a pena. Peça pro
 **O que faria:** copy institucional com pesquisa profunda, grande ideia e títulos informativos.
 **Bom pra:** manifesto de marca, campanhas institucionais, slogans, posicionamento.
 
+### Roteiro de Reels
+**O que faria:** roteiro de Reels de 15 a 60 segundos com gancho nos 3 primeiros segundos (fórmulas G9 e G10 do `/instagram`), texto na tela por cena, fala, cortes e legenda.
+**Bom pra:** quem grava vídeo e trava no que falar.
+
+### Sequência de stories
+**O que faria:** 3 a 6 telas de stories por dia (bastidor, enquete, caixinha, repost do feed, oferta) a partir do `/calendario-editorial`.
+**Bom pra:** manter os stories todo dia sem pensar do zero.
+
 ### Transcrição de vídeo do YouTube
 **O que faria:** baixa a transcrição de um vídeo (com yt-dlp) e transforma em carrossel, newsletter ou post.
 **Precisa de:** yt-dlp instalado (ver `templates/ferramentas/catalogo.md`).
+
+---
+
+## Skills de terceiros já incorporadas
+
+### instagram-skills (Sergey Bulaev, MIT)
+**O que é:** 9 skills de Instagram em inglês (legenda, carrossel, hashtags, humanizador, calendário, reaproveitamento, perfil, nicho, gancho).
+**Como entrou no Workfoli:** traduzidas e adaptadas como `/instagram`, `/legenda`, `/hashtags`, `/humanizar`, `/calendario-editorial`, `/reaproveitar`, `/perfil-instagram`, `/nicho-instagram`, `/extrair-gancho` e as regras de carrossel do `/carrossel`. Licença em `.claude/skills/instagram/CREDITOS.md`.
+**Fonte:** https://github.com/sergebulaev/instagram-skills
 
 ---
 

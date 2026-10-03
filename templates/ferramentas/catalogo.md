@@ -68,6 +68,13 @@ npx wrangler pages deploy <pasta> --project-name <nome>
 **Precisa de conta:** não, já vem no Claude Code
 **Quando usar:** pesquisa de referências, concorrência, dados para SEO
 
+### Apify (dados públicos do Instagram)
+**O que faz:** coleta os posts que estão rodando numa hashtag e as estatísticas públicas de perfis do Instagram, sem login
+**Precisa de conta:** sim, Apify (plano gratuito com créditos mensais; cada coleta gasta créditos, ver o preço do ator no site)
+**Configurar:** `APIFY_TOKEN` no `.env` (console.apify.com → Settings → API & Integrations)
+**Como usar numa skill:** `node --env-file=.env scripts/apify-instagram.js hashtag <tag> --max 20` ou `perfil <usuario>`. O script nasce no primeiro uso; o contrato está no `/nicho-instagram`
+**Quando usar:** `/nicho-instagram`, sempre com confirmação antes de gastar créditos. Sem conta, a skill funciona com dados colados
+
 ### Jina Reader
 **O que faz:** converte uma URL em markdown limpo (bom pra artigos longos)
 **Precisa de conta:** não (com limite de uso)

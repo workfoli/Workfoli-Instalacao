@@ -61,6 +61,7 @@ e deixar o usuário escolher.
 
 ### Passo 4 — Entrega
 
+- Antes de mostrar, passar pelo `/humanizar` (modo leve): sem "espero que este e-mail o encontre bem", "vale ressaltar", "fundamental" de enfeite
 - Mostrar o e-mail pronto pra copiar
 - Se houver conector de Gmail/Outlook ativo, oferecer criar o **rascunho** lá (nunca enviar sem confirmação explícita)
 - Se o usuário quiser guardar: `saidas/emails/<YYYY-MM-DD>-<assunto-curto>.md`

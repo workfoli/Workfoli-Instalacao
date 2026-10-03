@@ -97,53 +97,93 @@ arquivos personalizados. Não copie o modelo inteiro sobre a pasta da empresa. V
 
 ---
 
-## As skills
+## Skills e comandos
 
-Não precisa decorar comando: peça em linguagem normal ("faz um carrossel sobre X", "monta uma
-proposta pro cliente Y"). No Claude Code use `/nome`; no Codex, `$nome`.
+São 25 skills. Não precisa decorar comando: peça em linguagem normal ("faz um carrossel sobre X",
+"monta uma proposta pro cliente Y") e o agente encontra a skill certa pela descrição. Se preferir
+chamar direto, use `/nome` no Claude Code ou `$nome` no Codex. Algumas aceitam um complemento,
+como `/humanizar auditar` ou `/aprovar-post <slug>`.
 
 ### Núcleo
 
-| Skill | O que faz |
-|---|---|
-| `/instalar` | Entrevista inicial: memória, tom de voz, foco, marca e manifesto |
-| `/abrir` | Começa a sessão com o foco atual e as pendências |
-| `/salvar` | Salva no GitHub privado da empresa (commit + push) com checagem de segurança e validação |
-| `/atualizar` | Confere se memória e manifesto acompanham o estado real da pasta |
-| `/novo-projeto` | Pasta de projeto com regras próprias, registrada no manifesto |
-| `/mapear-rotinas` | Transforma tarefas repetidas em skills |
+| Claude Code | Codex | O que faz | Peça assim |
+|---|---|---|---|
+| `/instalar` | `$instalar` | Entrevista inicial: memória, tom de voz, foco, marca e manifesto | "instala o Workfoli" |
+| `/abrir` | `$abrir` | Começa a sessão com o foco atual, as pendências e os prazos | "onde paramos?" |
+| `/salvar` | `$salvar` | Salva no GitHub privado da empresa (commit + push) com checagem de segurança | "salva no GitHub" |
+| `/atualizar` | `$atualizar` | Confere se memória, tarefas e manifesto acompanham o estado real da pasta | "a memória está certa?" |
+| `/novo-projeto` | `$novo-projeto` | Pasta de projeto ou cliente com regras próprias, registrada no manifesto | "fechei com a Padaria X" |
+| `/mapear-rotinas` | `$mapear-rotinas` | Transforma tarefas repetidas em skills novas | "quero parar de fazer isso na mão" |
 
-### Conteúdo e SEO
+### Instagram
 
-| Skill | O que faz |
-|---|---|
-| `/carrossel` | Carrossel e post 1080×1350 com a marca |
-| `/publicar-tema` | Um tema vira artigo de blog + carrossel + legendas |
-| `/seo` | SEO, GEO e Google Ads em 8 passos, com pesquisa na web |
-| `/responder-avaliacoes` | Respostas humanas para avaliações do Google |
-| `/aprovar-post` | Publica blog + Instagram + Facebook, sempre com confirmação |
+| Claude Code | Codex | O que faz | Peça assim |
+|---|---|---|---|
+| `/instagram` | `$instagram` | Porta de entrada do kit: indica a skill certa e guarda as referências (fórmulas de gancho, algoritmo, hashtags, voz) | "me ajuda com o Instagram" |
+| `/legenda` | `$legenda` | Legenda de foto, post único ou Reels com gancho nos primeiros 125 caracteres e um CTA só | "faz uma legenda pra essa foto" |
+| `/carrossel` | `$carrossel` | Carrossel e post 1080×1350 com a marca, texto por fórmula (lista, antes e depois, mito x verdade, método) e legenda | "carrossel sobre como conservar bolo" |
+| `/hashtags` | `$hashtags` | Conjunto de 3 a 5 hashtags do tamanho que a conta consegue ranquear | "quais hashtags eu uso nesse post?" |
+| `/calendario-editorial` | `$calendario-editorial` | Plano da semana: formato, pilar, gancho, horário e objetivo por dia, com meta de salvamentos e envios | "o que eu posto essa semana?" |
+| `/extrair-gancho` | `$extrair-gancho` | Desmonta um post de referência e devolve a fórmula, o porquê e um molde pro seu tema | "por que esse Reels viralizou?" |
+| `/reaproveitar` | `$reaproveitar` | Transforma post do LinkedIn, artigo, newsletter ou vídeo em carrossel ou legenda nativa | "leva esse post do LinkedIn pro Instagram" |
+| `/perfil-instagram` | `$perfil-instagram` | Auditoria do perfil: nome buscável, bio, link, destaques, grade e fixados, com antes e depois | "melhora minha bio" |
+| `/nicho-instagram` | `$nicho-instagram` | O que está funcionando numa hashtag e os números de concorrentes, com dados colados ou pela Apify | "o que está funcionando no meu nicho?" |
+| `/aprovar-post` | `$aprovar-post` | Publica blog + Instagram + Facebook, sempre com confirmação | "aprova o post do bolo de nozes" |
+
+### Texto, conteúdo e SEO
+
+| Claude Code | Codex | O que faz | Peça assim |
+|---|---|---|---|
+| `/humanizar` | `$humanizar` | Tira a "cara de IA" de qualquer texto sem mudar o sentido nem a voz | "tá parecendo ChatGPT, arruma" |
+| `/humanizar auditar` | `$humanizar auditar` | Checklist antes de postar: reprovado, aprovado com ressalvas ou aprovado | "audita essa legenda" |
+| `/humanizar voz` | `$humanizar voz` | Aprende o jeito de escrever do negócio com 3 a 6 textos reais e atualiza a memória | "aprende meu jeito de escrever" |
+| `/publicar-tema` | `$publicar-tema` | Um tema vira artigo de blog + carrossel + legendas, tudo conectado | "gera o conteúdo completo sobre X" |
+| `/seo` | `$seo` | SEO, GEO (aparecer nas IAs) e Google Ads em 8 passos, com pesquisa na web | "quero aparecer no Google" |
+| `/responder-avaliacoes` | `$responder-avaliacoes` | Respostas humanas pras avaliações do Google | "responde essas avaliações" |
 
 ### Vendas e anúncios
 
-| Skill | O que faz |
-|---|---|
-| `/proposta` | Proposta comercial com a marca, em HTML e PDF |
-| `/anuncio-google` | Campanha de Google Ads em CSV para o Editor |
-| `/relatorio-ads` | Relatório semanal de Google Ads + Meta Ads, com alertas |
+| Claude Code | Codex | O que faz | Peça assim |
+|---|---|---|---|
+| `/proposta` | `$proposta` | Proposta comercial com a marca, em HTML e PDF | "monta uma proposta pro cliente Y" |
+| `/anuncio-google` | `$anuncio-google` | Campanha de Google Ads em CSV pronta pro Editor | "cria uma campanha no Google Ads" |
+| `/relatorio-ads` | `$relatorio-ads` | Relatório semanal de Google Ads + Meta Ads, com alertas e recomendações | "como foram os anúncios essa semana?" |
 
 ### Produção
 
-| Skill | O que faz |
-|---|---|
-| `/analisar-dados` | Resumo executivo de CSV, planilha ou PDF |
-| `/email-profissional` | Rascunho de e-mail no tom da marca |
+| Claude Code | Codex | O que faz | Peça assim |
+|---|---|---|---|
+| `/analisar-dados` | `$analisar-dados` | Resumo executivo de CSV, planilha, PDF ou JSON | "analisa essa planilha" |
+| `/email-profissional` | `$email-profissional` | Rascunho de e-mail no tom da marca, com duas versões em assunto delicado | "escreve um e-mail cobrando o cliente X" |
 
-## Usando com o Codex
+### Fluxos que combinam skills
 
-Abra a pasta no Codex e peça `roda o instalar` ou use `$instalar`. As skills ficam espelhadas em
-`.agents/skills/` pelo `npm run sync:skills` (a fonte continua em `.claude/skills/`). Pesquisa na
-web, push para o GitHub e publicação em redes dependem de rede, credenciais e confirmação.
-Os conectores e variáveis estão em `templates/ferramentas/catalogo.md`.
+- **Semana de Instagram:** `/calendario-editorial` → `/carrossel` e `/legenda` pra cada dia → `/humanizar auditar` → `/aprovar-post` (carrossel) ou postar pelo app
+- **Aprender com quem já funciona:** `/nicho-instagram` → `/extrair-gancho` no melhor post → `/carrossel` com o molde
+- **Conteúdo que aparece no Google e no Instagram:** `/seo` → `/publicar-tema` → `/aprovar-post`
+- **Perfil novo ou parado:** `/perfil-instagram` → `/humanizar voz` → `/calendario-editorial`
+- **Conteúdo que já existe:** `/reaproveitar` (artigo, vídeo ou post de outra rede) → `/hashtags` → publicar
+
+## Agentes
+
+O Workfoli funciona em dois agentes de IA, com as mesmas skills e as mesmas regras:
+
+| | Claude Code | Codex |
+|---|---|---|
+| Chamar uma skill | `/nome` (ex.: `/legenda`) | `$nome` (ex.: `$legenda`) |
+| Pedido em linguagem normal | sim, pela descrição da skill | sim, pela descrição da skill |
+| Onde as skills ficam | `.claude/skills/` (a fonte) | `.agents/skills/` (espelho gerado por `npm.cmd run sync:skills`) |
+| Regras que o agente lê | `CLAUDE.md`, que aponta pro `AGENTS.md` | `AGENTS.md` |
+| Memória do negócio | `_memoria/` (carregada no início de toda sessão) | `_memoria/` (lida no início de toda sessão) |
+| Pasta de projeto | `CLAUDE.md` + `AGENTS.md` próprios, criados pelo `/novo-projeto` | `AGENTS.md` próprio |
+
+Para usar com o Codex, abra a pasta e peça `roda o instalar` ou use `$instalar`. Se uma skill não
+aparecer, o Codex pode ler direto o `.claude/skills/<nome>/SKILL.md`. Pesquisa na web, push para o
+GitHub e publicação em redes dependem de rede, credenciais e confirmação. Os conectores e variáveis
+estão em `templates/ferramentas/catalogo.md`.
+
+Quem criar ou editar uma skill roda `npm.cmd run sync:skills` em seguida, para os dois agentes
+ficarem com a mesma versão. O Workfoli não traz subagentes: as skills rodam no agente principal.
 
 ## Segurança
 
@@ -158,3 +198,11 @@ Os conectores e variáveis estão em `templates/ferramentas/catalogo.md`.
 Enquanto o manifesto estiver com `"status": "template"`, esta pasta é o modelo público. As regras
 de manutenção estão no [AGENTS.md](AGENTS.md#modelo-público). Antes de publicar, rode
 `npm.cmd run validar` e `npm.cmd run sync:skills` e revise os arquivos do commit.
+
+## Créditos
+
+O kit de Instagram (`/instagram`, `/legenda`, `/hashtags`, `/humanizar`, `/calendario-editorial`,
+`/extrair-gancho`, `/reaproveitar`, `/perfil-instagram`, `/nicho-instagram` e as fórmulas do
+`/carrossel`) foi adaptado do [instagram-skills](https://github.com/sergebulaev/instagram-skills),
+de Sergey Bulaev, sob licença MIT. A licença original está em
+[`.claude/skills/instagram/CREDITOS.md`](.claude/skills/instagram/CREDITOS.md).

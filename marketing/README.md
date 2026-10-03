@@ -25,6 +25,12 @@ marketing/
 │   ├── 07-checklist-monitoramento.md
 │   └── 08-geo-otimizacao-ia.md
 │
+├── instagram/                   saídas do kit de Instagram
+│   ├── calendario-<YYYY-MM-DD>.md   /calendario-editorial (data da segunda-feira)
+│   ├── perfil-<YYYY-MM-DD>.md       /perfil-instagram
+│   ├── nicho-<alvo>-<YYYY-MM-DD>.md /nicho-instagram (dados brutos ficam em dados/instagram/)
+│   └── banco-de-ganchos.md          /extrair-gancho (estruturas, nunca o texto de terceiros)
+│
 ├── campanhas/                   saídas do /anuncio-google e do /relatorio-ads
 │   ├── google-ads-<YYYY-MM-DD>/ CSVs prontos pra importar
 │   └── relatorios/              relatórios semanais
@@ -35,6 +41,8 @@ marketing/
 ## Quem salva o quê
 
 - **`/carrossel` e `/publicar-tema`** criam uma pasta em `conteudo/<tipo>-<tema>-<data>/`
+- **`/legenda` e `/reaproveitar`** usam a mesma pasta `conteudo/` (`post-`, `reels-` ou `carrossel-<tema>-<data>/`)
+- **`/calendario-editorial`, `/perfil-instagram`, `/nicho-instagram` e `/extrair-gancho`** salvam em `instagram/`
 - **`/seo`** preenche os 8 arquivos numerados em `seo/`
 - **`/anuncio-google`** cria `campanhas/google-ads-<data>/` com os CSVs
 - **`/relatorio-ads`** cria `campanhas/relatorios/<data>-relatorio.md`

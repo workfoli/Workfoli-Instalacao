@@ -78,6 +78,8 @@ draft: true
 - Concreto: números, certificações, datas e valores quando houver fonte. Nunca inventar
 - Markdown limpo: `##` pra H2, `###` pra H3, listas com `-`, links `[texto](url)`
 
+**Revisão:** antes de seguir, passar o artigo pelo `/humanizar` (modo leve). Artigo de blog é onde mais aparecem "no cenário atual", "vale ressaltar", "não é só X, é Y" e parágrafos com três marcadores.
+
 ### Passo 3 — Carrossel resumo
 
 Sem perguntar se o usuário quer, seguir direto pro `/carrossel` (tipo 1: só texto), **mantendo os checkpoints dele** (aprovação do texto antes do visual).
@@ -96,11 +98,11 @@ Slides:
 Aqui a legenda do `/carrossel` é substituída pelas versões abaixo, que apontam pro blog. Salvar na pasta do carrossel:
 
 **`legenda.md`** (Instagram + Facebook, mesmo texto):
-- Gancho na primeira linha (até ~125 caracteres)
+- Gancho na primeira linha (até ~125 caracteres), com uma fórmula do `/legenda` escolhida pelo objetivo
 - 2-3 parágrafos de contexto, em frases naturais
 - CTA pro carrossel ("Arrasta pro lado") + CTA pro blog ("Texto completo no link da bio" ou a URL)
 - Bloco de oferta (diferenciais e contato)
-- Até 5 hashtags específicas (limite do Instagram)
+- 3 a 5 hashtags dimensionadas pelas regras do `/hashtags`
 
 **`legenda-linkedin.md`** (mais formal):
 - Gancho provocativo, mas profissional
@@ -109,6 +111,8 @@ Aqui a legenda do `/carrossel` é substituída pelas versões abaixo, que aponta
 - CTA: link direto pro blog
 - Sem bloco de oferta agressivo: fechar com uma linha sobre quem é a empresa
 - Até 3 hashtags do nicho profissional, no final
+
+Passar as duas legendas pelo `/humanizar` (modo leve) antes de salvar.
 
 ### Passo 5 — Resumo da entrega
 

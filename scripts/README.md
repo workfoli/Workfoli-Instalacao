@@ -27,6 +27,7 @@ skill detecta que falta o script e cria junto com você:
 | `gerar-imagem.js` | `/carrossel` (com foto IA) | Gera foto via API de imagem da OpenAI ou do Gemini |
 | `postar-instagram.js` | `/aprovar-post` | Publica o carrossel no Instagram (Meta Graph API) |
 | `postar-facebook.js` | `/aprovar-post` | Publica o post com fotos na Página do Facebook (Meta Graph API) |
+| `apify-instagram.js` | `/nicho-instagram` | Coleta posts de uma hashtag e estatísticas de perfis do Instagram pela Apify (salva em `dados/instagram/`) |
 
 `/anuncio-google` e `/relatorio-ads` não precisam de script: geram e leem
 CSV direto.
