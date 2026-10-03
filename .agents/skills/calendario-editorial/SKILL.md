@@ -78,7 +78,7 @@ Com capacidade menor que 4 posts, ajustar a checagem à proporção e avisar o q
 
 Mostrar o plano, salvar em `marketing/instagram/calendario-<YYYY-MM-DD>.md` e oferecer:
 
-> "Quer que eu já produza algum? Carrossel vai pelo `/carrossel`, legenda pelo `/legenda`. Também posso pôr os posts da semana em `tarefas.md`."
+> "Quer que eu já produza algum? Carrossel vai pelo `/carrossel`, Reels pelo `/roteiro-reels`, legenda pelo `/legenda` e os stories de cada dia pelo `/stories`. Também posso pôr os posts da semana em `tarefas.md`."
 
 Se o usuário pedir, devolver também um JSON simples (dia, formato, pilar, fórmula, ângulo, objetivo, horário) pra importar numa planilha ou ferramenta de agendamento.
 

@@ -28,6 +28,7 @@ marketing/
 ├── instagram/                   saídas do kit de Instagram
 │   ├── calendario-<YYYY-MM-DD>.md   /calendario-editorial (data da segunda-feira)
 │   ├── perfil-<YYYY-MM-DD>.md       /perfil-instagram
+│   ├── stories-<YYYY-MM-DD>.md      /stories (telas desenhadas vão em conteudo/stories-<tema>-<data>/)
 │   ├── nicho-<alvo>-<YYYY-MM-DD>.md /nicho-instagram (dados brutos ficam em dados/instagram/)
 │   └── banco-de-ganchos.md          /extrair-gancho (estruturas, nunca o texto de terceiros)
 │
@@ -42,7 +43,8 @@ marketing/
 
 - **`/carrossel` e `/publicar-tema`** criam uma pasta em `conteudo/<tipo>-<tema>-<data>/`
 - **`/legenda` e `/reaproveitar`** usam a mesma pasta `conteudo/` (`post-`, `reels-` ou `carrossel-<tema>-<data>/`)
-- **`/calendario-editorial`, `/perfil-instagram`, `/nicho-instagram` e `/extrair-gancho`** salvam em `instagram/`
+- **`/roteiro-reels`** cria `conteudo/reels-<tema>-<data>/` com `roteiro.md` e `legenda.md`
+- **`/calendario-editorial`, `/stories`, `/perfil-instagram`, `/nicho-instagram` e `/extrair-gancho`** salvam em `instagram/`
 - **`/seo`** preenche os 8 arquivos numerados em `seo/`
 - **`/anuncio-google`** cria `campanhas/google-ads-<data>/` com os CSVs
 - **`/relatorio-ads`** cria `campanhas/relatorios/<data>-relatorio.md`

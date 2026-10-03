@@ -20,5 +20,8 @@ O objetivo é que qualquer pessoa (ou agente) execute do mesmo jeito sem pergunt
 ## Como medir se deu certo
 ```
 
+O `/whatsapp kit` cria `processos/atendimento-whatsapp.md` (saudação, ausência, respostas rápidas
+e roteiro de atendimento) neste mesmo modelo.
+
 Processos descrevem **como** trabalhar. Registros de pessoas (clientes, pacientes, contatos) ficam
 na camada privada da instalação, nunca em Markdown desta pasta.

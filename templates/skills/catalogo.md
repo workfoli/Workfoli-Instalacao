@@ -1,6 +1,6 @@
 # Catálogo de skills
 
-Skills que vão além das 25 que já vêm no Workfoli (listadas no `README.md`). Use como
+Skills que vão além das 29 que já vêm no Workfoli (listadas no `README.md`). Use como
 referência ao criar skills novas com o `/mapear-rotinas`, ou instale as que fizerem sentido.
 
 > A fonte deste projeto fica em `.claude/skills/<nome>/SKILL.md` e é espelhada em
@@ -71,14 +71,6 @@ Estas **não vêm instaladas**. São skills que costumam valer a pena. Peça pro
 ### Copy de marca (método David Ogilvy)
 **O que faria:** copy institucional com pesquisa profunda, grande ideia e títulos informativos.
 **Bom pra:** manifesto de marca, campanhas institucionais, slogans, posicionamento.
-
-### Roteiro de Reels
-**O que faria:** roteiro de Reels de 15 a 60 segundos com gancho nos 3 primeiros segundos (fórmulas G9 e G10 do `/instagram`), texto na tela por cena, fala, cortes e legenda.
-**Bom pra:** quem grava vídeo e trava no que falar.
-
-### Sequência de stories
-**O que faria:** 3 a 6 telas de stories por dia (bastidor, enquete, caixinha, repost do feed, oferta) a partir do `/calendario-editorial`.
-**Bom pra:** manter os stories todo dia sem pensar do zero.
 
 ### Transcrição de vídeo do YouTube
 **O que faria:** baixa a transcrição de um vídeo (com yt-dlp) e transforma em carrossel, newsletter ou post.

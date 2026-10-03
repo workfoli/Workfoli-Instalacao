@@ -53,7 +53,7 @@ Extrair do pedido e perguntar só o que faltar:
 
 Sugerir 2 ou 3 que combinem com o tema e deixar o usuário escolher (ou seguir com a primeira, se ele pedir rapidez).
 
-**Reels:** o gancho principal está no vídeo (G9 ou G10). Oferecer o texto do primeiro quadro e a primeira fala; a legenda fica curta, com contexto e o motivo pra salvar ou enviar.
+**Reels:** o gancho principal está no vídeo (G9 ou G10). Oferecer o texto do primeiro quadro e a primeira fala; a legenda fica curta, com contexto e o motivo pra salvar ou enviar. Se o vídeo ainda não foi gravado, o roteiro completo sai pelo `/roteiro-reels`.
 
 ### Passo 3 — Escrever
 

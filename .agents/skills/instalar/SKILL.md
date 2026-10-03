@@ -164,7 +164,7 @@ Se a pasta não for repositório Git, não tiver `origin` ou o `origin` já apon
 
 > "Pronto. O Workfoli já conhece o seu negócio.
 >
-> No começo de cada sessão, roda `/abrir`: eu mostro o foco e as pendências antes de começar. Quando quiser um carrossel, uma proposta, um plano de SEO ou uma campanha, é só pedir.
+> No começo de cada sessão, roda `/abrir`: eu mostro o foco e as pendências antes de começar. No fim, `/fechar` registra o que foi feito e o que ficou pendente. Quando quiser um carrossel, uma proposta, um plano de SEO ou uma campanha, é só pedir.
 >
 > Você disse que repete '<resposta 10>' toda semana. Quando quiser tirar isso das costas de vez, roda `/mapear-rotinas` que eu transformo em skill sua."
 

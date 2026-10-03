@@ -49,7 +49,7 @@ Nota: **passa / precisa melhorar / reprova**.
 
 - **Campo de nome:** `Nome | palavra buscada`, até 30 caracteres. Ex.: "Ana Ribeiro | Confeitaria". É a correção de maior efeito no perfil
 - **Bio (150):** quem você ajuda + sobre o que posta + uma prova ou especificidade. Começar pelo benefício, não pelo cargo. Negócio local: cidade ou bairro na bio. Quebras de linha e um emoji-âncora ok. Entregar 2 opções com a contagem de caracteres
-- **Link:** um, ligado ao objetivo. Negócio que vende por WhatsApp: link direto pro WhatsApp com mensagem pronta
+- **Link:** um, ligado ao objetivo. Negócio que vende por WhatsApp: link direto pro WhatsApp com mensagem pronta (gerado pelo `/whatsapp link`)
 - **Categoria:** um rótulo que reforça a bio sem repetir
 - **Destaques:** 4 a 6, da esquerda pra direita na ordem da próxima pergunta do visitante (ex.: Comece aqui → Cardápio/Serviços → Clientes → Dúvidas → Como pedir). Capas no estilo de `identidade/design-guide.md`, nomes de uma palavra
 - **Grade:** a vitrine é julgada como conjunto. Apontar quais posts do topo reordenar ou substituir

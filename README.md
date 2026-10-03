@@ -58,6 +58,7 @@ Tem mais de uma empresa? Clone uma vez para cada, em pastas separadas (ex.: `Acm
 | `dados/` | Entradas locais (planilhas, exports). Nunca vão para o Git |
 | `scripts/` | Renderização, espelhamento de skills e validação do manifesto |
 | `.claude/skills/`, `.agents/skills/` | Skills (fonte em `.claude`, espelho para o Codex) |
+| `SKILLS.md` | Guia de todas as skills: o que fazem e como chamar |
 | `AGENTS.md` / `CLAUDE.md` | Regras dos agentes (fonte única no `AGENTS.md`) |
 
 ## Manifesto e validação
@@ -99,10 +100,13 @@ arquivos personalizados. Não copie o modelo inteiro sobre a pasta da empresa. V
 
 ## Skills e comandos
 
-São 25 skills. Não precisa decorar comando: peça em linguagem normal ("faz um carrossel sobre X",
+São 29 skills. Não precisa decorar comando: peça em linguagem normal ("faz um carrossel sobre X",
 "monta uma proposta pro cliente Y") e o agente encontra a skill certa pela descrição. Se preferir
 chamar direto, use `/nome` no Claude Code ou `$nome` no Codex. Algumas aceitam um complemento,
-como `/humanizar auditar` ou `/aprovar-post <slug>`.
+como `/humanizar auditar`, `/whatsapp kit` ou `/aprovar-post <slug>`.
+
+**O guia completo, com as funcionalidades de cada skill, os modos e onde cada entrega fica, está
+em [SKILLS.md](SKILLS.md).**
 
 ### Núcleo
 
@@ -110,6 +114,7 @@ como `/humanizar auditar` ou `/aprovar-post <slug>`.
 |---|---|---|---|
 | `/instalar` | `$instalar` | Entrevista inicial: memória, tom de voz, foco, marca e manifesto | "instala o Workfoli" |
 | `/abrir` | `$abrir` | Começa a sessão com o foco atual, as pendências e os prazos | "onde paramos?" |
+| `/fechar` | `$fechar` | Fecha a sessão: o que foi feito, tarefas atualizadas, decisões registradas, oferta de salvar | "por hoje é isso" |
 | `/salvar` | `$salvar` | Salva no GitHub privado da empresa (commit + push) com checagem de segurança | "salva no GitHub" |
 | `/atualizar` | `$atualizar` | Confere se memória, tarefas e manifesto acompanham o estado real da pasta | "a memória está certa?" |
 | `/novo-projeto` | `$novo-projeto` | Pasta de projeto ou cliente com regras próprias, registrada no manifesto | "fechei com a Padaria X" |
@@ -122,6 +127,8 @@ como `/humanizar auditar` ou `/aprovar-post <slug>`.
 | `/instagram` | `$instagram` | Porta de entrada do kit: indica a skill certa e guarda as referências (fórmulas de gancho, algoritmo, hashtags, voz) | "me ajuda com o Instagram" |
 | `/legenda` | `$legenda` | Legenda de foto, post único ou Reels com gancho nos primeiros 125 caracteres e um CTA só | "faz uma legenda pra essa foto" |
 | `/carrossel` | `$carrossel` | Carrossel e post 1080×1350 com a marca, texto por fórmula (lista, antes e depois, mito x verdade, método) e legenda | "carrossel sobre como conservar bolo" |
+| `/roteiro-reels` | `$roteiro-reels` | Roteiro de Reels de 15 a 90 s: gancho de 3 s, cena por cena (o que filmar, texto na tela, fala), capa, teleprompter e legenda | "roteiro de Reels sobre X" |
+| `/stories` | `$stories` | Sequência de 3 a 6 stories por dia com figurinhas, repost do feed, respostas da caixinha e destaques | "o que eu posto nos stories hoje?" |
 | `/hashtags` | `$hashtags` | Conjunto de 3 a 5 hashtags do tamanho que a conta consegue ranquear | "quais hashtags eu uso nesse post?" |
 | `/calendario-editorial` | `$calendario-editorial` | Plano da semana: formato, pilar, gancho, horário e objetivo por dia, com meta de salvamentos e envios | "o que eu posto essa semana?" |
 | `/extrair-gancho` | `$extrair-gancho` | Desmonta um post de referência e devolve a fórmula, o porquê e um molde pro seu tema | "por que esse Reels viralizou?" |
@@ -141,10 +148,12 @@ como `/humanizar auditar` ou `/aprovar-post <slug>`.
 | `/seo` | `$seo` | SEO, GEO (aparecer nas IAs) e Google Ads em 8 passos, com pesquisa na web | "quero aparecer no Google" |
 | `/responder-avaliacoes` | `$responder-avaliacoes` | Respostas humanas pras avaliações do Google | "responde essas avaliações" |
 
-### Vendas e anúncios
+### Vendas, atendimento e anúncios
 
 | Claude Code | Codex | O que faz | Peça assim |
 |---|---|---|---|
+| `/whatsapp` | `$whatsapp` | Responde clientes no tom da marca, follow-up de orçamento, lista de transmissão e link wa.me | "responde esse cliente no WhatsApp" |
+| `/whatsapp kit` | `$whatsapp kit` | Kit do WhatsApp Business: saudação, ausência, respostas rápidas e roteiro de atendimento | "monta minhas respostas rápidas" |
 | `/proposta` | `$proposta` | Proposta comercial com a marca, em HTML e PDF | "monta uma proposta pro cliente Y" |
 | `/anuncio-google` | `$anuncio-google` | Campanha de Google Ads em CSV pronta pro Editor | "cria uma campanha no Google Ads" |
 | `/relatorio-ads` | `$relatorio-ads` | Relatório semanal de Google Ads + Meta Ads, com alertas e recomendações | "como foram os anúncios essa semana?" |
@@ -158,10 +167,12 @@ como `/humanizar auditar` ou `/aprovar-post <slug>`.
 
 ### Fluxos que combinam skills
 
-- **Semana de Instagram:** `/calendario-editorial` → `/carrossel` e `/legenda` pra cada dia → `/humanizar auditar` → `/aprovar-post` (carrossel) ou postar pelo app
-- **Aprender com quem já funciona:** `/nicho-instagram` → `/extrair-gancho` no melhor post → `/carrossel` com o molde
+- **Rotina do dia:** `/abrir` → o trabalho do dia → `/fechar` → `/salvar`
+- **Semana de Instagram:** `/calendario-editorial` → `/carrossel`, `/roteiro-reels` e `/legenda` pra cada post → `/stories` todo dia → `/humanizar auditar` → `/aprovar-post` (carrossel) ou postar pelo app
+- **Aprender com quem já funciona:** `/nicho-instagram` → `/extrair-gancho` no melhor post → `/carrossel` ou `/roteiro-reels` com o molde
 - **Conteúdo que aparece no Google e no Instagram:** `/seo` → `/publicar-tema` → `/aprovar-post`
-- **Perfil novo ou parado:** `/perfil-instagram` → `/humanizar voz` → `/calendario-editorial`
+- **Perfil novo ou parado:** `/perfil-instagram` → `/whatsapp link` pra bio → `/humanizar voz` → `/calendario-editorial`
+- **Do seguidor ao cliente:** `/whatsapp kit` → `/whatsapp responder` → `/proposta` → `/whatsapp follow-up` → `/responder-avaliacoes`
 - **Conteúdo que já existe:** `/reaproveitar` (artigo, vídeo ou post de outra rede) → `/hashtags` → publicar
 
 ## Agentes

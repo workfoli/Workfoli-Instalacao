@@ -25,6 +25,7 @@ pastas. Não anunciar essas leituras; usar o contexto naturalmente.
 | Pasta / arquivo | Conteúdo |
 |---|---|
 | `workfoli.base.json` | Manifesto: empresa, serviços, projetos, módulos, integrações (índice local da empresa) |
+| `SKILLS.md` | Guia das skills: o que cada uma faz e como chamar no Claude Code e no Codex |
 | `_memoria/` | Memória do negócio |
 | `identidade/` | Marca, logo e design-guide |
 | `servicos/` | Um arquivo por serviço ou produto |
@@ -92,7 +93,8 @@ As skills compartilhadas têm uma única fonte em `.claude/skills/`. O script
 `npm run sync:skills` espelha essa fonte em `.agents/skills/` para o Codex.
 Depois de criar ou editar uma skill, executar esse comando. Se a versão do
 Codex não mostrar a skill nativa, ler diretamente o correspondente
-`.claude/skills/<nome>/SKILL.md`.
+`.claude/skills/<nome>/SKILL.md`. O guia de todas as skills (o que fazem e como
+chamar) fica em `SKILLS.md`; skill nova ou alterada também é registrada lá.
 
 No Claude Code, `/nome` chama uma skill. No Codex, `$nome` chama a mesma
 skill; linguagem natural também pode acioná-la pela descrição. Ao escrever
@@ -159,7 +161,8 @@ o modelo público do Workfoli, e valem também estas regras de manutenção:
   `schemas/workfoli.base.schema.json`) para as instalações existentes continuarem
   válidas.
 - Antes de concluir, rodar `npm.cmd run validar`. Depois de editar skills, rodar
-  `npm.cmd run sync:skills` e conferir o espelho.
+  `npm.cmd run sync:skills`, conferir o espelho e manter em dia a tabela do
+  `README.md` e o guia `SKILLS.md`.
 - O Hub foi retirado do projeto e preservado na instalação privada da Workfoli.
   Não iniciar, instalar ou restaurar sem pedido explícito.
 

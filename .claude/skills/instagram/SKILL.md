@@ -1,8 +1,9 @@
 ---
 name: instagram
 description: >
-  Kit de Instagram do Workfoli: indica qual skill usar (legenda, carrossel, hashtags, calendário,
-  perfil, nicho, gancho de post viral, reaproveitamento, revisão anti-cara-de-IA) e guarda as
+  Kit de Instagram do Workfoli: indica qual skill usar (legenda, carrossel, roteiro de Reels,
+  stories, hashtags, calendário, perfil, nicho, gancho de post viral, reaproveitamento, revisão
+  anti-cara-de-IA) e guarda as
   referências compartilhadas (fórmulas de gancho, algoritmo, hashtags, regras de voz). Use quando o
   usuário disser "me ajuda com o instagram", "o que dá pra fazer no instagram", "quero crescer no
   instagram", "kit de instagram" ou /instagram sem uma tarefa específica.
@@ -18,6 +19,8 @@ Porta de entrada das skills de Instagram. Quando o pedido já é específico ("f
 |---|---|
 | Legenda pra foto, post único ou Reels | `/legenda` |
 | Carrossel (texto + visual com a marca) | `/carrossel` |
+| Roteiro de Reels pra gravar (cena, texto na tela, fala) | `/roteiro-reels` |
+| Sequência de stories do dia ou da semana | `/stories` |
 | Hashtags que a conta consegue ranquear | `/hashtags` |
 | Planejar a semana (Reels, carrosséis, stories) | `/calendario-editorial` |
 | Tirar a cara de IA de um texto ou auditar antes de postar | `/humanizar` |
@@ -27,6 +30,7 @@ Porta de entrada das skills de Instagram. Quando o pedido já é específico ("f
 | Ver o que está funcionando no nicho ou os números de um concorrente | `/nicho-instagram` |
 | Blog + carrossel + legendas de um tema | `/publicar-tema` |
 | Publicar no Instagram e no Facebook | `/aprovar-post` |
+| Responder quem chama no WhatsApp, link wa.me pra bio | `/whatsapp` |
 
 Sem tarefa clara: perguntar o objetivo do momento (alcance, salvamentos, seguidores ou vendas), olhar `_memoria/estrategia.md` e sugerir no máximo duas skills pra começar.
 
