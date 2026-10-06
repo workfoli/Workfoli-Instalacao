@@ -139,11 +139,11 @@ Se a pessoa corrigir a prioridade, ajustar `estrategia.md` na hora.
 
 ## Fase 5 — Desligar do modelo público
 
-Quem clona o Workfoli recebe a pasta ligada ao modelo público (`github.com/workfoli/workfoli`). Agora que a pasta é da empresa, nenhum envio pode ir para lá.
+Quem clona o Workfoli recebe a pasta ligada ao modelo público (`github.com/workfoli/Workfoli-Instalacao`). Agora que a pasta é da empresa, nenhum envio pode ir para lá.
 
 Conferir, nesta ordem:
 1. `git rev-parse --show-toplevel` aponta para esta pasta (não para uma pasta acima dela);
-2. `git remote get-url origin` aponta para `github.com/workfoli/workfoli`.
+2. `git remote get-url origin` aponta para `github.com/workfoli/Workfoli-Instalacao` (ou para o endereço antigo do modelo, `github.com/workfoli/workfoli`).
 
 Se as duas condições valerem, rodar:
 

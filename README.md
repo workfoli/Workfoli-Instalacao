@@ -19,7 +19,7 @@ Requisitos: Git, Node.js 22+ e Claude Code ou Codex. No PowerShell, clone já co
 empresa, no formato `Workfoli <Empresa>` (troque `Acme` pelo nome dela):
 
 ```powershell
-git clone https://github.com/workfoli/workfoli.git "Workfoli Acme"
+git clone https://github.com/workfoli/Workfoli-Instalacao.git "Workfoli Acme"
 cd "Workfoli Acme"
 code .
 ```

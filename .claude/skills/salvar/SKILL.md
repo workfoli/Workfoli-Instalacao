@@ -28,10 +28,10 @@ Uma função só: garantir que o trabalho do usuário está seguro no GitHub. Pr
 
 ### Antes de tudo: para onde vai o envio
 
-Quem clona o Workfoli recebe a pasta ligada ao modelo público (`github.com/workfoli/workfoli`). O trabalho da empresa nunca vai para lá. Conferir nesta ordem:
+Quem clona o Workfoli recebe a pasta ligada ao modelo público (`github.com/workfoli/Workfoli-Instalacao`). O trabalho da empresa nunca vai para lá. Conferir nesta ordem:
 
 1. `git rev-parse --show-toplevel`. Se falhar, ou se apontar para uma pasta acima desta, a pasta ainda não tem repositório próprio: seguir para **Primeira vez**, começando com `git init`.
-2. `git remote get-url origin`. Se apontar para `github.com/workfoli/workfoli`, desligar o modelo antes de qualquer envio e seguir para **Primeira vez**:
+2. `git remote get-url origin`. Se apontar para `github.com/workfoli/Workfoli-Instalacao` (ou para o endereço antigo, `github.com/workfoli/workfoli`), desligar o modelo antes de qualquer envio e seguir para **Primeira vez**:
    ```
    git remote rename origin workfoli
    git remote set-url --push workfoli DESATIVADO
@@ -77,4 +77,4 @@ Repositório novo é sempre **privado**, a menos que o usuário peça o contrár
 - Nunca rodar `git reset --hard` ou outro comando destrutivo sem confirmação clara
 - Se o push falhar por divergência (alguém mudou o remoto), explicar em linguagem simples e oferecer `git pull --rebase` antes de tentar de novo
 - Nunca pular a checagem de segurança
-- Nunca enviar a pasta de uma empresa (`"status": "active"`) para o modelo público `github.com/workfoli/workfoli`
+- Nunca enviar a pasta de uma empresa (`"status": "active"`) para o modelo público `github.com/workfoli/Workfoli-Instalacao` (antes `github.com/workfoli/workfoli`)
