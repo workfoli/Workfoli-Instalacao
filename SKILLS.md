@@ -40,8 +40,9 @@ Primeiro comando depois de clonar. Entrevista curta, uma pergunta por vez.
 - Cadastra os serviços no manifesto `workfoli.base.json` e em `servicos/`, e valida
 - Acrescenta ao `AGENTS.md` as regras do perfil
 - Desliga a pasta do modelo público, pra nada da empresa ir pra lá
+- Confere o nome da pasta: se ainda for `workfoli`, mostra como renomear pra `Workfoli <Empresa>`
 
-**Entrega:** memória, marca, manifesto e `tarefas.md` preenchidos.
+**Entrega:** memória, marca, manifesto e `tarefas.md` preenchidos, numa pasta `Workfoli <Empresa>`.
 
 ### abrir
 

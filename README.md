@@ -15,17 +15,20 @@ Este repositório é o **modelo**: não contém dados de nenhuma empresa. Cada e
 
 ## Começar
 
-Requisitos: Git, Node.js 22+ e Claude Code ou Codex. No PowerShell:
+Requisitos: Git, Node.js 22+ e Claude Code ou Codex. No PowerShell, clone já com o nome da
+empresa, no formato `Workfoli <Empresa>` (troque `Acme` pelo nome dela):
 
 ```powershell
-git clone https://github.com/workfoli/workfoli.git
-cd workfoli
+git clone https://github.com/workfoli/workfoli.git "Workfoli Acme"
+cd "Workfoli Acme"
 code .
 ```
 
-O clone cria uma única pasta, `workfoli`, com tudo o que precisa. Nessa pasta, rode `/instalar`
-no Claude Code (ou `$instalar` no Codex): uma entrevista curta cadastra a sua empresa (memória,
-tom de voz, foco, identidade visual e manifesto).
+O clone cria uma única pasta, `Workfoli Acme`, com tudo o que precisa. Assim, numa pasta com vários
+clientes, cada Workfoli é reconhecido pelo nome. Nessa pasta, rode `/instalar` no Claude Code (ou
+`$instalar` no Codex): uma entrevista curta cadastra a sua empresa (memória, tom de voz, foco,
+identidade visual e manifesto). Se a pasta tiver sido clonada sem nome (`workfoli`), o `/instalar`
+mostra no final como renomeá-la para `Workfoli <Empresa>`.
 
 Depois, `/salvar` guarda tudo num repositório **privado** da sua empresa no GitHub. A pasta vem
 ligada ao modelo público; antes do primeiro envio, o Workfoli desliga esse vínculo para que nada da
@@ -38,7 +41,9 @@ manifesto não precisa delas:
 npm.cmd run validar
 ```
 
-Tem mais de uma empresa? Clone uma vez para cada, em pastas separadas (ex.: `Acme\workfoli`).
+Tem mais de uma empresa? Clone uma vez para cada, cada uma com o próprio nome (ex.:
+`Clientes\Acme\Workfoli Acme` e `Clientes\Padaria Sol\Workfoli Padaria Sol`). A pasta do cliente
+pode guardar outros materiais ao lado do Workfoli dele (arquivos originais, modelos impressos).
 
 ---
 

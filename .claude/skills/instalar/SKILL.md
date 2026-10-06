@@ -130,6 +130,7 @@ Mostrar o que foi configurado:
 ✓ Pendências: tarefas.md
 ✓ Manifesto: workfoli.base.json ([N] serviço(s), validado)
 ✓ AGENTS.md com as regras do perfil [perfil]
+✓ Pasta: Workfoli [Empresa]  [já com o nome certo | renomear no final]
 ```
 
 Se a pessoa corrigir a prioridade, ajustar `estrategia.md` na hora.
@@ -160,7 +161,29 @@ Se a pasta não for repositório Git, não tiver `origin` ou o `origin` já apon
 
 ---
 
-## Fase 6 — Próximos passos
+## Fase 6 — Nome da pasta
+
+Cada instalação se chama `Workfoli <Empresa>`, com o nome da empresa como ela é conhecida (resposta 1, com espaços e acentos; sem `/ \ : * ? " < > |`). Ex.: "Padaria Sol" → `Workfoli Padaria Sol`. Assim, numa pasta com vários clientes, nenhum Workfoli é confundido com outro.
+
+Conferir o nome da pasta atual (`Split-Path -Leaf (Get-Location)` no PowerShell). Se já for `Workfoli <Empresa>`, pular esta fase.
+
+Se não for (o clone sem nome cria `workfoli`), **não renomear sozinho**: o Windows bloqueia renomear a pasta enquanto o VS Code, o Claude Code ou o Codex estão abertos nela. Mostrar o passo a passo, com o nome já preenchido:
+
+> "Falta só dar o nome certo à pasta: `Workfoli <Empresa>`. Feche o VS Code e, no PowerShell, rode:
+>
+> ```powershell
+> cd "<pasta acima desta>"
+> Rename-Item "<nome atual>" "Workfoli <Empresa>"
+> code "Workfoli <Empresa>"
+> ```
+>
+> Nada de dentro muda: memória, skills e Git continuam iguais."
+
+Se a pessoa preferir outro nome, respeitar.
+
+---
+
+## Fase 7 — Próximos passos
 
 > "Pronto. O Workfoli já conhece o seu negócio.
 >
